@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>200566074168-vob0mpbtsqfpj96go6hj0en7l3v2os6i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.200566074168-vob0mpbtsqfpj96go6hj0en7l3v2os6i</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD_51D0RWSApk4zRGV2Uyw0m3DKz8Mm-6Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>200566074168</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Pagefamdesigns.GoalTogether</string>
+	<key>PROJECT_ID</key>
+	<string>goal-sharing-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>goal-sharing-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:200566074168:ios:c263af9613bde508492fcd</string>
+	<key>DATABASE_URL</key>
+	<string>https://goal-sharing-app.firebaseio.com</string>
+</dict>
+</plist>

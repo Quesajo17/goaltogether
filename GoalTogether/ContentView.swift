@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var authState: AuthenticationState
+    
+    private func signoutTapped() {
+        authState.signout()
+    }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Group {
+            if authState.loggedInUser != nil {
+                HomeView()
+            } else {
+                AuthenticationView(authType: .login)
+            }
+        }
+        .animation(.easeInOut)
+        .transition(.move(edge: .bottom))
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
