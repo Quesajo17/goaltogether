@@ -13,6 +13,7 @@ import Firebase
 class ActionRepository: ObservableObject, ActionStoreType {
     
     let db = Firestore.firestore()
+    var listener: ListenerRegistration?
     
     @Published var actions = [Action]()
     var actionsPublished: Published<[Action]> { _actions }
@@ -28,7 +29,7 @@ class ActionRepository: ObservableObject, ActionStoreType {
         let userId = Auth.auth().currentUser?.uid
         
         if userId != nil {
-            db.collection("action")
+            self.listener = db.collection("action")
                 .order(by: "createdTime")
                 .whereField("userId", isEqualTo: userId!)
                 .addSnapshotListener { (querySnapshot, error) in
@@ -125,7 +126,7 @@ class ActionRepository: ObservableObject, ActionStoreType {
     }
     
     func endListening() {
-        
+            listener!.remove()
     }
     
 }

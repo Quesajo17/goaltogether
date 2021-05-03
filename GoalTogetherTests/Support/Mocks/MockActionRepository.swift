@@ -56,4 +56,8 @@ class MockActionRepository: ObservableObject, ActionStoreType {
         }
         self.actions = actionList
     }
+    
+    func endListening() {
+        // TODO: Maybe need to add something?
+    }
 }

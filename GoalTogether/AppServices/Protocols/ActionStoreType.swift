@@ -21,4 +21,5 @@ protocol ActionStoreType {
     func addAction(_ action: Action)
     func updateAction(_ action: Action)
     func deleteAction(_ action: Action)
+    func endListening()
 }

@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+/*
 struct ActionEditPage: View {
-    @ObservedObject var actionCellVM: ActionCellViewModel
+    @Binding var actionCellVM: ActionCellViewModel?
     
     @State var startDate: Date
     @State var description: String
@@ -17,8 +18,8 @@ struct ActionEditPage: View {
     @Binding var sheetActive: Bool
     @Environment(\.presentationMode) var presentationMode
     
+    
     init(actionCellVM: ActionCellViewModel, sheetActive: Binding<Bool>) {
-        self.actionCellVM = actionCellVM
         _startDate = State(initialValue: actionCellVM.action.startDate)
         self._sheetActive = sheetActive
         if actionCellVM.action.description != nil {
@@ -44,7 +45,7 @@ struct ActionEditPage: View {
                     
                     Section(header: Text("Description")) {
                         TextEditor(text: $description)
-                    }.fixedSize(horizontal: false, vertical: false)
+                    }//.fixedSize(horizontal: false, vertical: false)
                     
                     // TextField("Description", text: $actionCellVM.action.description)
                     Section(header: Text("Dates")) {
@@ -72,13 +73,12 @@ struct ActionEditPage: View {
                         }
                         // Add back "in: startDate...," after selection if I don't want people to be able to pick a past date.
                         DatePicker("Due Date", selection: $dueDate, displayedComponents: .date)
-                    }.navigationBarTitle("Edit Task")
-                    .navigationBarItems(
-                        leading: Button(action: { cancelChanges() }) { Text("Cancel") },
-                        trailing: Button(action: { saveChanges() }) { Text("Save") }
-                    )
-                
-            }
+                    }
+            }.navigationBarTitle("Edit Task")
+            .navigationBarItems(
+                leading: Button(action: { cancelChanges() }) { Text("Cancel") },
+                trailing: Button(action: { saveChanges() }) { Text("Save") }
+            )
         }
     }
     
@@ -111,3 +111,5 @@ struct ActionEdit_Previews: PreviewProvider {
         ActionEditPage(actionCellVM: ActionCellViewModel(action: Action(title: "Test Task")), sheetActive: .constant(true))
     }
 }
+
+ */

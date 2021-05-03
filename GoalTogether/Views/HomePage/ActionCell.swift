@@ -11,8 +11,6 @@ struct ActionCell: View {
     @ObservedObject var actionCellVM: ActionCellViewModel
     
     var onCommit: (Action) -> (Void) = { _ in }
-    @State var settingsExpanded: Bool = false
-    @State var additionalSettings: Bool = false
     
     var body: some View {
         ZStack {
@@ -29,18 +27,15 @@ struct ActionCell: View {
                 }
                 TextField("Enter the Task Title", text: $actionCellVM.action.title, onCommit: {self.onCommit(self.actionCellVM.action)})
                 Spacer()
-                Image(systemName: "gearshape")
+                Image(systemName: "pencil")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .padding()
                     .onTapGesture {
-                        self.additionalSettings.toggle()
+                        print("pencil tap")
                     }
             }
         }.padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
-        .sheet(isPresented: $additionalSettings) {
-            ActionEditPage(actionCellVM: actionCellVM, sheetActive: $additionalSettings)
-        }
     }
 }
 

@@ -16,8 +16,6 @@ struct GoalTogetherApp: App {
     init() {
         FirebaseApp.configure()
         self.authState = AuthenticationState.shared
-        
-        setupFirebase()
     }
  
  

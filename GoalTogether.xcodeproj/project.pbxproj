@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7083F97BD2BBEA4546C77CE2 /* libPods-GoalTogether-GoalTogetherUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B1FC1777FFE74299C1ECE2 /* libPods-GoalTogether-GoalTogetherUITests.a */; };
 		90396A000EF37BF35F26C830 /* libPods-GoalTogether.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1AF9A5275EC9FCADA46310 /* libPods-GoalTogether.a */; };
+		DA4F605E2629B63700766C0F /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4F605D2629B63700766C0F /* UserProfileViewModel.swift */; };
 		DA5D90AB2618DC8F00220C8E /* GoalTogetherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D90AA2618DC8F00220C8E /* GoalTogetherApp.swift */; };
 		DA5D90AD2618DC8F00220C8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D90AC2618DC8F00220C8E /* ContentView.swift */; };
 		DA5D90AF2618DC9200220C8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5D90AE2618DC9200220C8E /* Assets.xcassets */; };
@@ -35,7 +36,7 @@
 		DA5D91772618E33800220C8E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91762618E33800220C8E /* DateExtensions.swift */; };
 		DA5D917C2618E35900220C8E /* ActionStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D917B2618E35900220C8E /* ActionStoreType.swift */; };
 		DA5D91812618E3C600220C8E /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91802618E3C600220C8E /* Goal.swift */; };
-		DA5D91862618E3F000220C8E /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91852618E3F000220C8E /* AppUser.swift */; };
+		DA5D91862618E3F000220C8E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91852618E3F000220C8E /* UserProfile.swift */; };
 		DA5D918B2618E40900220C8E /* MoraleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D918A2618E40900220C8E /* MoraleGroup.swift */; };
 		DA5D91902618E41D00220C8E /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D918F2618E41D00220C8E /* Practice.swift */; };
 		DA5D91952618E43800220C8E /* ActionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91942618E43800220C8E /* ActionRepository.swift */; };
@@ -48,6 +49,9 @@
 		DA5D91C22618E72200220C8E /* ActionListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91C12618E72200220C8E /* ActionListViewModelTests.swift */; };
 		DA5D9219261A083500220C8E /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D9218261A083400220C8E /* AuthenticationState.swift */; };
 		DA5D9225261A0B3A00220C8E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D9224261A0B3A00220C8E /* HomeView.swift */; };
+		DA8DE4512632604900F7A16F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8DE4502632604900F7A16F /* ImagePicker.swift */; };
+		DACCA56E2636E7DD00B8F6C8 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACCA56D2636E7DD00B8F6C8 /* ProfileImage.swift */; };
+		DAFF3EC926398F1F008B8878 /* FirebaseProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF3EC826398F1F008B8878 /* FirebaseProfileImage.swift */; };
 		F9C13453C1E9FF5CCAF2EEC2 /* libPods-GoalTogetherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B049AE747EE62D7AC970FC3 /* libPods-GoalTogetherTests.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +81,7 @@
 		B7FB69847347C8245AFA9C06 /* Pods-GoalTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogether/Pods-GoalTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		BAFA60B9D3B93E9D0B4F35D8 /* Pods-GoalTogether-GoalTogetherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether-GoalTogetherUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogether-GoalTogetherUITests/Pods-GoalTogether-GoalTogetherUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C04B33D249E2A9682B4CBD6E /* Pods-GoalTogether-GoalTogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether-GoalTogetherUITests.release.xcconfig"; path = "Target Support Files/Pods-GoalTogether-GoalTogetherUITests/Pods-GoalTogether-GoalTogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DA4F605D2629B63700766C0F /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		DA5D90A72618DC8F00220C8E /* GoalTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D90AA2618DC8F00220C8E /* GoalTogetherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTogetherApp.swift; sourceTree = "<group>"; };
 		DA5D90AC2618DC8F00220C8E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,7 +112,7 @@
 		DA5D91762618E33800220C8E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		DA5D917B2618E35900220C8E /* ActionStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionStoreType.swift; sourceTree = "<group>"; };
 		DA5D91802618E3C600220C8E /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
-		DA5D91852618E3F000220C8E /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		DA5D91852618E3F000220C8E /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		DA5D918A2618E40900220C8E /* MoraleGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoraleGroup.swift; sourceTree = "<group>"; };
 		DA5D918F2618E41D00220C8E /* Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
 		DA5D91942618E43800220C8E /* ActionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRepository.swift; sourceTree = "<group>"; };
@@ -121,6 +126,9 @@
 		DA5D92072618FE6200220C8E /* GoalTogether.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoalTogether.entitlements; sourceTree = "<group>"; };
 		DA5D9218261A083400220C8E /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 		DA5D9224261A0B3A00220C8E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DA8DE4502632604900F7A16F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DACCA56D2636E7DD00B8F6C8 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		DAFF3EC826398F1F008B8878 /* FirebaseProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProfileImage.swift; sourceTree = "<group>"; };
 		ECC1D3ED8C16AF99D2100EEA /* Pods-GoalTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogetherTests/Pods-GoalTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,6 +271,7 @@
 			children = (
 				DA5D91992618E49400220C8E /* ActionCellViewModel.swift */,
 				DA5D919E2618E4A700220C8E /* ActionListViewModel.swift */,
+				DA4F605D2629B63700766C0F /* UserProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -280,7 +289,7 @@
 			children = (
 				DA5D916F2618E30200220C8E /* Action.swift */,
 				DA5D91802618E3C600220C8E /* Goal.swift */,
-				DA5D91852618E3F000220C8E /* AppUser.swift */,
+				DA5D91852618E3F000220C8E /* UserProfile.swift */,
 				DA5D918A2618E40900220C8E /* MoraleGroup.swift */,
 				DA5D918F2618E41D00220C8E /* Practice.swift */,
 				DA5D9100261B2EE400FF3D6C /* AuthenticationType.swift */,
@@ -291,6 +300,8 @@
 		DA5D90DC2618DCD400220C8E /* AppServices */ = {
 			isa = PBXGroup;
 			children = (
+				DAFF3EC726398EF1008B8878 /* Firebase */,
+				DAFF3EC626398A9C008B8878 /* UIViewElements */,
 				DA5D9114261B37F000FF3D6C /* Styles */,
 				DA5D921D261A083800220C8E /* Authentication */,
 				DA5D91752618E32B00220C8E /* Protocols */,
@@ -330,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5D91602618E22F00220C8E /* ProfilePage.swift */,
+				DACCA56D2636E7DD00B8F6C8 /* ProfileImage.swift */,
 			);
 			path = ProfilePage;
 			sourceTree = "<group>";
@@ -425,6 +437,22 @@
 				DA5D9218261A083400220C8E /* AuthenticationState.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		DAFF3EC626398A9C008B8878 /* UIViewElements */ = {
+			isa = PBXGroup;
+			children = (
+				DA8DE4502632604900F7A16F /* ImagePicker.swift */,
+			);
+			path = UIViewElements;
+			sourceTree = "<group>";
+		};
+		DAFF3EC726398EF1008B8878 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DAFF3EC826398F1F008B8878 /* FirebaseProfileImage.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -668,6 +696,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA5D910B261B354D00FF3D6C /* LogoTitleView.swift in Sources */,
+				DACCA56E2636E7DD00B8F6C8 /* ProfileImage.swift in Sources */,
 				DA5D91662618E24100220C8E /* SettingsPage.swift in Sources */,
 				DA5D91702618E30200220C8E /* Action.swift in Sources */,
 				DA5D91522618E1EB00220C8E /* HomePage.swift in Sources */,
@@ -684,13 +713,16 @@
 				DA5D919A2618E49400220C8E /* ActionCellViewModel.swift in Sources */,
 				DA5D91772618E33800220C8E /* DateExtensions.swift in Sources */,
 				DA5D919F2618E4A700220C8E /* ActionListViewModel.swift in Sources */,
+				DA4F605E2629B63700766C0F /* UserProfileViewModel.swift in Sources */,
 				DA5D9101261B2EE400FF3D6C /* AuthenticationType.swift in Sources */,
 				DA5D9219261A083500220C8E /* AuthenticationState.swift in Sources */,
 				DA5D91902618E41D00220C8E /* Practice.swift in Sources */,
 				DA5D9116261B380200FF3D6C /* GeneralButtonStyle.swift in Sources */,
-				DA5D91862618E3F000220C8E /* AppUser.swift in Sources */,
+				DA5D91862618E3F000220C8E /* UserProfile.swift in Sources */,
+				DA8DE4512632604900F7A16F /* ImagePicker.swift in Sources */,
 				DA5D91952618E43800220C8E /* ActionRepository.swift in Sources */,
 				DA5D916B2618E25300220C8E /* GroupsPage.swift in Sources */,
+				DAFF3EC926398F1F008B8878 /* FirebaseProfileImage.swift in Sources */,
 				DA5D91452618E16800220C8E /* SignInWithAppleButton.swift in Sources */,
 				DA5D915C2618E21B00220C8E /* FriendsPage.swift in Sources */,
 				DA5D91A92618E50500220C8E /* ActionEditPage.swift in Sources */,

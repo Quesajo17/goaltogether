@@ -5,7 +5,7 @@
 //  Created by Charlie Page on 4/4/21.
 //
 
-// Using this file: https://www.alfianlosari.com/posts/building-authentication-in-swiftui-using-firebase-auth-sdk-and-sign-in-with-apple/
+// Used this tutorial to create: https://www.alfianlosari.com/posts/building-authentication-in-swiftui-using-firebase-auth-sdk-and-sign-in-with-apple/
 
 import Foundation
 import Firebase
@@ -20,7 +20,10 @@ enum LoginOption {
 
 class AuthenticationState: NSObject, ObservableObject {
     
+    // The firebase logged in user, and the userProfile associated with the users collection
     @Published var loggedInUser: User?
+    
+    
     @Published var isAuthenticating = false
     @Published var error: NSError?
     
@@ -28,6 +31,14 @@ class AuthenticationState: NSObject, ObservableObject {
     
     private let auth = Auth.auth()
     fileprivate var currentNonce: String?
+    
+    override init() {
+        super.init()
+        auth.addStateDidChangeListener { [weak self] (_, user) in
+            self?.loggedInUser = user
+        }
+    }
+    
     
     func login(with loginOption: LoginOption) {
         self.isAuthenticating = true
@@ -59,30 +70,34 @@ class AuthenticationState: NSObject, ObservableObject {
         
     }
     
+    
     func signout() {
         try? auth.signOut()
+        self.loggedInUser = nil
     }
 
+    
     private func handleSignInWith(email: String, password: String) {
         auth.signIn(withEmail: email, password: password, completion: handleAuthResultCompletion)
     }
+    
     
     private func handleAuthResultCompletion(auth: AuthDataResult?, error: Error?) {
         DispatchQueue.main.async {
             self.isAuthenticating = false
             if let user = auth?.user {
-                self.loggedInUser = user
+                // self.loggedInUser = user
             } else if let error = error {
                 self.error = error as NSError
             }
         }
     }
     
+    
     private func handleSignInWithGoogle() {
         // TODO
     }
 }
-
 
 extension AuthenticationState: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
@@ -185,3 +200,5 @@ private func randomNonceString(length: Int = 32) -> String {
 
   return result
 }
+
+
