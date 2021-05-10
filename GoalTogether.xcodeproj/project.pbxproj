@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7083F97BD2BBEA4546C77CE2 /* libPods-GoalTogether-GoalTogetherUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B1FC1777FFE74299C1ECE2 /* libPods-GoalTogether-GoalTogetherUITests.a */; };
-		90396A000EF37BF35F26C830 /* libPods-GoalTogether.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1AF9A5275EC9FCADA46310 /* libPods-GoalTogether.a */; };
+		10E6A011DE1D7AC8708D1A3E /* Pods_GoalTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F75B9D5BAD82DEBB6319BF /* Pods_GoalTogether.framework */; };
+		5FBF78AFE4EEDB8A8B405325 /* Pods_GoalTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E333C915E463DD0E27E6F41B /* Pods_GoalTogetherTests.framework */; };
 		DA4F605E2629B63700766C0F /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4F605D2629B63700766C0F /* UserProfileViewModel.swift */; };
 		DA5D90AB2618DC8F00220C8E /* GoalTogetherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D90AA2618DC8F00220C8E /* GoalTogetherApp.swift */; };
 		DA5D90AD2618DC8F00220C8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D90AC2618DC8F00220C8E /* ContentView.swift */; };
@@ -49,10 +49,12 @@
 		DA5D91C22618E72200220C8E /* ActionListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91C12618E72200220C8E /* ActionListViewModelTests.swift */; };
 		DA5D9219261A083500220C8E /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D9218261A083400220C8E /* AuthenticationState.swift */; };
 		DA5D9225261A0B3A00220C8E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D9224261A0B3A00220C8E /* HomeView.swift */; };
+		DA64E4332642C93800740A05 /* NoProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA64E4322642C93800740A05 /* NoProfileImage.swift */; };
+		DA64E4382642C9A100740A05 /* ViewandUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA64E4372642C9A100740A05 /* ViewandUIView.swift */; };
 		DA8DE4512632604900F7A16F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8DE4502632604900F7A16F /* ImagePicker.swift */; };
+		DA911E7A264770600014FFAF /* CurrentUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA911E79264770600014FFAF /* CurrentUserProfile.swift */; };
 		DACCA56E2636E7DD00B8F6C8 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACCA56D2636E7DD00B8F6C8 /* ProfileImage.swift */; };
-		DAFF3EC926398F1F008B8878 /* FirebaseProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF3EC826398F1F008B8878 /* FirebaseProfileImage.swift */; };
-		F9C13453C1E9FF5CCAF2EEC2 /* libPods-GoalTogetherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B049AE747EE62D7AC970FC3 /* libPods-GoalTogetherTests.a */; };
+		F45184ACF6C009C8F8531983 /* Pods_GoalTogether_GoalTogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7572D6A966C2734B9BED07F /* Pods_GoalTogether_GoalTogetherUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,9 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08B1FC1777FFE74299C1ECE2 /* libPods-GoalTogether-GoalTogetherUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoalTogether-GoalTogetherUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A1AF9A5275EC9FCADA46310 /* libPods-GoalTogether.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoalTogether.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B049AE747EE62D7AC970FC3 /* libPods-GoalTogetherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoalTogetherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		44F75B9D5BAD82DEBB6319BF /* Pods_GoalTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8750B5470B34B22B32A9AC17 /* Pods-GoalTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-GoalTogetherTests/Pods-GoalTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA51A2B8433764B740F64B0C /* Pods-GoalTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether.release.xcconfig"; path = "Target Support Files/Pods-GoalTogether/Pods-GoalTogether.release.xcconfig"; sourceTree = "<group>"; };
 		B7FB69847347C8245AFA9C06 /* Pods-GoalTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogether/Pods-GoalTogether.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,9 +126,13 @@
 		DA5D92072618FE6200220C8E /* GoalTogether.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoalTogether.entitlements; sourceTree = "<group>"; };
 		DA5D9218261A083400220C8E /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 		DA5D9224261A0B3A00220C8E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DA64E4322642C93800740A05 /* NoProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoProfileImage.swift; sourceTree = "<group>"; };
+		DA64E4372642C9A100740A05 /* ViewandUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewandUIView.swift; sourceTree = "<group>"; };
 		DA8DE4502632604900F7A16F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DA911E79264770600014FFAF /* CurrentUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProfile.swift; sourceTree = "<group>"; };
 		DACCA56D2636E7DD00B8F6C8 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
-		DAFF3EC826398F1F008B8878 /* FirebaseProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProfileImage.swift; sourceTree = "<group>"; };
+		E333C915E463DD0E27E6F41B /* Pods_GoalTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7572D6A966C2734B9BED07F /* Pods_GoalTogether_GoalTogetherUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalTogether_GoalTogetherUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC1D3ED8C16AF99D2100EEA /* Pods-GoalTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogetherTests/Pods-GoalTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90396A000EF37BF35F26C830 /* libPods-GoalTogether.a in Frameworks */,
+				10E6A011DE1D7AC8708D1A3E /* Pods_GoalTogether.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9C13453C1E9FF5CCAF2EEC2 /* libPods-GoalTogetherTests.a in Frameworks */,
+				5FBF78AFE4EEDB8A8B405325 /* Pods_GoalTogetherTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7083F97BD2BBEA4546C77CE2 /* libPods-GoalTogether-GoalTogetherUITests.a in Frameworks */,
+				F45184ACF6C009C8F8531983 /* Pods_GoalTogether_GoalTogetherUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,9 +180,9 @@
 		CDE7E96BA2E8764F37083455 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A1AF9A5275EC9FCADA46310 /* libPods-GoalTogether.a */,
-				08B1FC1777FFE74299C1ECE2 /* libPods-GoalTogether-GoalTogetherUITests.a */,
-				1B049AE747EE62D7AC970FC3 /* libPods-GoalTogetherTests.a */,
+				44F75B9D5BAD82DEBB6319BF /* Pods_GoalTogether.framework */,
+				E7572D6A966C2734B9BED07F /* Pods_GoalTogether_GoalTogetherUITests.framework */,
+				E333C915E463DD0E27E6F41B /* Pods_GoalTogetherTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -386,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5D91762618E33800220C8E /* DateExtensions.swift */,
+				DA64E4372642C9A100740A05 /* ViewandUIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5D9218261A083400220C8E /* AuthenticationState.swift */,
+				DA911E79264770600014FFAF /* CurrentUserProfile.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				DA8DE4502632604900F7A16F /* ImagePicker.swift */,
+				DA64E4322642C93800740A05 /* NoProfileImage.swift */,
 			);
 			path = UIViewElements;
 			sourceTree = "<group>";
@@ -450,7 +457,6 @@
 		DAFF3EC726398EF1008B8878 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				DAFF3EC826398F1F008B8878 /* FirebaseProfileImage.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 				DA5D90A42618DC8F00220C8E /* Frameworks */,
 				DA5D90A52618DC8F00220C8E /* Resources */,
 				19721F83548298BF2112964F /* [CP] Copy Pods Resources */,
+				E35693B409439F8A582000F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -505,6 +512,7 @@
 				DA5D90C02618DC9200220C8E /* Frameworks */,
 				DA5D90C12618DC9200220C8E /* Resources */,
 				EED953FDCF0C25AAE03B5E30 /* [CP] Copy Pods Resources */,
+				2A9F9FFE32F5150ACDB631BC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -605,6 +613,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoalTogether/Pods-GoalTogether-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2A9F9FFE32F5150ACDB631BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoalTogether-GoalTogetherUITests/Pods-GoalTogether-GoalTogetherUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoalTogether-GoalTogetherUITests/Pods-GoalTogether-GoalTogetherUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoalTogether-GoalTogetherUITests/Pods-GoalTogether-GoalTogetherUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4664211396C0400FB5E9E131 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -647,6 +672,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E35693B409439F8A582000F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoalTogether/Pods-GoalTogether-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoalTogether/Pods-GoalTogether-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoalTogether/Pods-GoalTogether-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EED953FDCF0C25AAE03B5E30 /* [CP] Copy Pods Resources */ = {
@@ -695,6 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA64E4332642C93800740A05 /* NoProfileImage.swift in Sources */,
 				DA5D910B261B354D00FF3D6C /* LogoTitleView.swift in Sources */,
 				DACCA56E2636E7DD00B8F6C8 /* ProfileImage.swift in Sources */,
 				DA5D91662618E24100220C8E /* SettingsPage.swift in Sources */,
@@ -714,6 +757,7 @@
 				DA5D91772618E33800220C8E /* DateExtensions.swift in Sources */,
 				DA5D919F2618E4A700220C8E /* ActionListViewModel.swift in Sources */,
 				DA4F605E2629B63700766C0F /* UserProfileViewModel.swift in Sources */,
+				DA911E7A264770600014FFAF /* CurrentUserProfile.swift in Sources */,
 				DA5D9101261B2EE400FF3D6C /* AuthenticationType.swift in Sources */,
 				DA5D9219261A083500220C8E /* AuthenticationState.swift in Sources */,
 				DA5D91902618E41D00220C8E /* Practice.swift in Sources */,
@@ -722,10 +766,10 @@
 				DA8DE4512632604900F7A16F /* ImagePicker.swift in Sources */,
 				DA5D91952618E43800220C8E /* ActionRepository.swift in Sources */,
 				DA5D916B2618E25300220C8E /* GroupsPage.swift in Sources */,
-				DAFF3EC926398F1F008B8878 /* FirebaseProfileImage.swift in Sources */,
 				DA5D91452618E16800220C8E /* SignInWithAppleButton.swift in Sources */,
 				DA5D915C2618E21B00220C8E /* FriendsPage.swift in Sources */,
 				DA5D91A92618E50500220C8E /* ActionEditPage.swift in Sources */,
+				DA64E4382642C9A100740A05 /* ViewandUIView.swift in Sources */,
 				DA5D90AB2618DC8F00220C8E /* GoalTogetherApp.swift in Sources */,
 				DA5D91572618E20100220C8E /* SeasonPage.swift in Sources */,
 			);
@@ -899,6 +943,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Pagefamdesigns.GoalTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -923,6 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Pagefamdesigns.GoalTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

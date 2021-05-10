@@ -1,46 +1,36 @@
 //
-//  UserProfileViewModel.swift
+//  CurrentUserProfile.swift
 //  GoalTogether
 //
-//  Created by Charlie Page on 4/16/21.
+//  Created by Charlie Page on 5/8/21.
 //
 
 import Foundation
-import Combine
 import Firebase
-import SwiftUI
-import SDWebImage
-import SDWebImageSwiftUI
+import Combine
 
-
-class UserProfileViewModel: ObservableObject {
+class CurrentUserProfile: NSObject, ObservableObject {
     
-    @Published var loggedInUser: User?
-    @Published var userProfile: UserProfile?
+    @Published var currentUser: UserProfile?
     
-    
-    @Published var originalImageURL: String = ""
-    @Published var selectedImage: UIImage?
+    static let shared = CurrentUserProfile()
     
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
-    private var cancellable = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
-    
-    init() {
-        
-        // Subscribes to the logged in user in Authentication state, and sets user profile/loggedInUser in the view model based on that logged in user.
-        AuthenticationState.shared.$loggedInUser
-            .print()
-            .sink { [weak self] user in
-                print("User ID from Authentication State is now to the VM as \(String(describing: user?.uid))")
-                self?.loadUser()
-                self?.loggedInUser = user
-                self?.loadImageFromFirebase()
-            }
-            .store(in: &cancellable)
+    override init() {
+        super.init()
+            // Subscribes to the logged in user in Authentication state, and sets user profile/loggedInUser in the view model based on that logged in user.
+            AuthenticationState.shared.$loggedInUser
+                .print()
+                .sink { [weak self] user in
+                    print("User ID from Authentication State is now to the VM as \(String(describing: user?.uid))")
+                    self?.loadUser()
+                    // self?.loadImageFromFirebase()
+                }
+                .store(in: &cancellables)
     }
-    
     
     func loadUser() {
         let userId = auth.currentUser?.uid
@@ -58,14 +48,14 @@ class UserProfileViewModel: ObservableObject {
                     if userProfile != nil {
                         profile = userProfile
                         print("set profile to existing profile")
-                        self.userProfile = profile
-                        self.loadImageFromFirebase()
+                        self.currentUser = profile
+                        // self.loadImageFromFirebase()
                     } else {
                         let newUser = self.userProfileUsingAuthUser()
                         self.createFirestoreUser(newUser)
                         profile = newUser
                         print("LoadUser function: created new Firestore User")
-                        self.userProfile = profile
+                        self.currentUser = profile
 
                     }
                 case .failure(let error):
@@ -73,7 +63,7 @@ class UserProfileViewModel: ObservableObject {
                 }
             }
         } else {
-            self.userProfile = nil
+            self.currentUser = nil
         }
         return
     }
@@ -88,10 +78,10 @@ class UserProfileViewModel: ObservableObject {
     }
     
     func userProfileUsingAuthUser() -> UserProfile {
-        let id = self.loggedInUser?.uid
-        let name = self.loggedInUser?.displayName
-        let email = self.loggedInUser?.email
-        let phoneNumber = self.loggedInUser?.phoneNumber
+        let id = AuthenticationState.shared.loggedInUser?.uid
+        let name = AuthenticationState.shared.loggedInUser?.displayName
+        let email = AuthenticationState.shared.loggedInUser?.email
+        let phoneNumber = AuthenticationState.shared.loggedInUser?.phoneNumber
         
         return UserProfile(id: id, firstName: name, email: email, phoneNumber: phoneNumber)
     }
@@ -111,7 +101,7 @@ class UserProfileViewModel: ObservableObject {
     
     func verifyMatch(_ userProfile: UserProfile) {
         let profileId = userProfile.id
-        let authId = self.loggedInUser?.uid
+        let authId = AuthenticationState.shared.loggedInUser?.uid
         
         guard profileId != nil else { fatalError("User Profile Id is nil")}
         guard authId != nil else { fatalError("auth Id is nil")}
@@ -126,7 +116,7 @@ class UserProfileViewModel: ObservableObject {
             return
         }
         
-        let reference = getStorageRef(for: self.userProfile!)
+        let reference = getStorageRef(for: self.currentUser!)
         
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
@@ -142,17 +132,16 @@ class UserProfileViewModel: ObservableObject {
         reference.downloadURL(completion: { (url, error) in
             if let metaImageUrl = url?.absoluteString {
                 print(metaImageUrl)
-                self.userProfile?.profileImagePhoto = metaImageUrl
+                self.currentUser?.profileImagePhoto = metaImageUrl
             } else {
                 print("No image URL")
             }
         })
-        
     }
     
-    
+/*
     func loadImageFromFirebase() {
-        if let profileImageURL = userProfile?.profileImagePhoto {
+        if let profileImageURL = currentUser?.profileImagePhoto {
             let httpsReference = Storage.storage().reference(forURL: profileImageURL)
             
             httpsReference.downloadURL { url, error in
@@ -169,6 +158,8 @@ class UserProfileViewModel: ObservableObject {
             return
         }
     }
+ */
+
     
     func getStorageRef(for userProfile: UserProfile) -> StorageReference {
         guard let id = userProfile.id else {

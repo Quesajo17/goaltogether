@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileImage: View {
     @EnvironmentObject private var userProfileVM: UserProfileViewModel
@@ -25,11 +26,15 @@ struct ProfileImage: View {
                     )
                     .shadow(radius: 7)
                     .padding()
-            } else if userProfileVM.originalImage != nil {
-                Image(uiImage: userProfileVM.originalImage!)
+            } else if userProfileVM.originalImageURL != "" {
+                WebImage(url: URL(string: userProfileVM.originalImageURL))
+                    .placeholder(Image(systemName: "person.fill"))
                     .resizable()
                     .scaledToFill()
+                    .foregroundColor(.white)
+                    .font(.system(size: 60))
                     .frame(width: 100, height: 100)
+                    .background(Color.gray)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.black, lineWidth: 4))
                     .overlay(

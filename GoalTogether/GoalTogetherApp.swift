@@ -12,10 +12,12 @@ import Firebase
 struct GoalTogetherApp: App {
 
     let authState: AuthenticationState
+    let userProfile: CurrentUserProfile
     
     init() {
         FirebaseApp.configure()
         self.authState = AuthenticationState.shared
+        self.userProfile = CurrentUserProfile.shared
     }
  
  
@@ -23,6 +25,7 @@ struct GoalTogetherApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(authState)
+                .environmentObject(userProfile)
         }
     }
 }

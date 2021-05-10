@@ -51,12 +51,12 @@ struct HomePage: View {
                         ForEach(actionListVM.baseDateActionCellViewModels) { actionCellVM in
                             ActionCell(actionCellVM: actionCellVM)
                         }
-                    }
-                    if presentAddNewItem {
-                        ActionCell(actionCellVM: ActionCellViewModel(action: (Action(title: ""))) { action in
-                            self.actionListVM.addAction(action)
-                            self.presentAddNewItem.toggle()
-                        })
+                        if presentAddNewItem {
+                            ActionCell(actionCellVM: ActionCellViewModel(action: (Action(title: "")))) { action in
+                                self.actionListVM.addAction(action)
+                                self.presentAddNewItem.toggle()
+                            }
+                        }
                     }
                     if actionListVM.baseDateWeekActionCellViewModels.count > 0 {
                         HStack {
