@@ -16,7 +16,7 @@ class ActionListViewModel: ObservableObject {
     @Published var previousActionCellViewModels = [ActionCellViewModel]()
     @Published var futureActionCellViewModels = [ActionCellViewModel]()
     
-    @Published var baseDate: Date = Date()
+    @Published var baseDate: Date = Date().dateStart()
     @Published var hideCompleted: Bool = true
     @Published var baseDateIsEndOfWeek: Bool = false
     
@@ -38,12 +38,13 @@ class ActionListViewModel: ObservableObject {
     // Secondary initializer to initialize a different type of action repository.
     init(actionRepository: ActionStoreType) {
         self.actionRepository = actionRepository
-        self.baseDateIsEndOfWeek = isDateEndOfWeek(date: self.baseDate.todayAlmostMidnight(), weekEnd: self.baseDate.endOfWeekDate())
+        self.baseDateIsEndOfWeek = isDateEndOfWeek(date: self.baseDate, weekEnd: self.baseDate.endOfWeekDate(timeOfDay: .start))
         
         loadPastActions()
         loadBaseActions()
         loadWeekActions()
         loadFutureActions()
+
     }
     
     // MARK: Functions for initializing the main groups of actions for the Homepage.
@@ -68,7 +69,7 @@ class ActionListViewModel: ObservableObject {
                 action.beforeDate(self.baseDate) && action.showIfIncomplete(onlyIncomplete: self.hideCompleted)
             }
             .map { action in
-                ActionCellViewModel(action: action)
+                ActionCellViewModel(actionRepository: self.actionRepository, action: action)
             }
         }
         .assign(to: \.previousActionCellViewModels, on: self)
@@ -84,7 +85,7 @@ class ActionListViewModel: ObservableObject {
                 action.inDateRange(from: self.baseDate, to: self.baseDate) && action.showIfIncomplete(onlyIncomplete: self.hideCompleted)
             }
             .map { action in
-                ActionCellViewModel(action: action)
+                ActionCellViewModel(actionRepository: self.actionRepository, action: action)
             }
         }
         .assign(to: \.baseDateActionCellViewModels, on: self)
@@ -102,7 +103,7 @@ class ActionListViewModel: ObservableObject {
                 action.inDateRange(from: startDate, to: startDate.endOfWeekDate()) && action.showIfIncomplete(onlyIncomplete: self.hideCompleted)
             }
             .map { action in
-                ActionCellViewModel(action: action)
+                ActionCellViewModel(actionRepository: self.actionRepository, action: action)
             }
         }
         .assign(to: \.baseDateWeekActionCellViewModels, on: self)
@@ -120,7 +121,7 @@ class ActionListViewModel: ObservableObject {
                 action.afterDate(startAfter) && action.showIfIncomplete(onlyIncomplete: self.hideCompleted)
             }
             .map { action in
-                ActionCellViewModel(action: action)
+                ActionCellViewModel(actionRepository: self.actionRepository, action: action)
             }
         }
         .assign(to: \.futureActionCellViewModels, on: self)
@@ -128,7 +129,6 @@ class ActionListViewModel: ObservableObject {
     }
     
     // MARK: Functions for CRUD operations on existing actions
-    
     func addAction(_ action: Action) {
         actionRepository.addAction(action)
     }

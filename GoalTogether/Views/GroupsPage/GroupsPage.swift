@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GroupsPage: View {
     var body: some View {
-        Text("Groups Page")
+        GroupHubView(groupHubVM: GroupHubViewModel(groupRepository: MyGroupsRepository()))
     }
 }
 

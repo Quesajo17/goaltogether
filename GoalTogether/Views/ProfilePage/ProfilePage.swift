@@ -13,27 +13,11 @@ struct ProfilePage: View {
     
     @Environment(\.presentationMode) private var presentationMode
     
-    @State var userProfile: UserProfile?
-    
-    @State var originalImage: UIImage?
-    @State var selectedImage: UIImage?
-    
-    @State var email: String = ""
-    @State var firstName: String = ""
-    @State var lastName: String = ""
-    
     @State private var showImagePicker = false
     
     var cancellable = Set<AnyCancellable>()
     
-    init() {
-        
-        userProfileVM.$userProfile
-            .print()
-            .assign(to: \.userProfile, on: self)
-            .store(in: &cancellable)
-             
-    }
+
     
     var body: some View {
         NavigationView {
@@ -46,25 +30,22 @@ struct ProfilePage: View {
                                 }
                         }.listRowBackground(Color(UIColor.systemGroupedBackground))
                         Section(header: Text("Details")) {
-                            TextField("First Name", text: $firstName)
-                            TextField("Last Name", text: $lastName)
-                            TextField("email", text: $email)
+                            TextField("First Name", text: $userProfileVM.editingProfile.firstName ?? "")
+                            TextField("Last Name", text: $userProfileVM.editingProfile.lastName ?? "")
+                            TextField("email", text: $userProfileVM.editingProfile.email ?? "")
                         }
                         Section() {
                             HStack {
                                 Spacer()
                                 Button(action: {
                                     AuthenticationState.shared.signout()
+                                    presentationMode.wrappedValue.dismiss()
                                 }, label: {
                                     Text("Sign Out")
                                 })
                                 Spacer()
                             }
                         }
-                    }.onAppear {
-                        email = userProfileVM.userProfile?.email ?? ""
-                        firstName = userProfileVM.userProfile?.firstName ?? ""
-                        lastName = userProfileVM.userProfile?.lastName ?? ""
                     }
                 .navigationBarTitle("Your Profile")
                 .navigationBarItems(leading: Button(action: { cancelChanges() }) {
@@ -83,18 +64,11 @@ struct ProfilePage: View {
     }
     
     func saveChanges() {
-        var userProfile = UserProfile(id: userProfileVM.userProfile!.id, firstName: self.firstName, lastName: self.lastName, email: self.email)
+        userProfileVM.saveEditingProfile()
         
         if userProfileVM.selectedImage != nil {
-            userProfileVM.saveImagetoFirebase(image: userProfileVM.selectedImage!)
-            
-            
-            //need to figure out how to make this wait until the other stuff is finished.
-            userProfile.profileImagePhoto = userProfileVM.userProfile?.profileImagePhoto
+            userProfileVM.originalProfile.saveImagetoFirebase(image: userProfileVM.selectedImage!)
         }
-        
-        print("user's profile image is \(userProfile.profileImagePhoto)")
-        userProfileVM.updateUser(userProfile)
         presentationMode.wrappedValue.dismiss()
     }
 }

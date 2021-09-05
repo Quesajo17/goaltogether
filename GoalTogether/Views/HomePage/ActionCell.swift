@@ -12,6 +12,8 @@ struct ActionCell: View {
     
     var onCommit: (Action) -> (Void) = { _ in }
     
+    @Binding var editingAction: Action?
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
@@ -23,7 +25,7 @@ struct ActionCell: View {
                     .frame(width: 20, height: 20)
                     .padding()
                     .onTapGesture {
-                        self.actionCellVM.action.completed.toggle()
+                        self.actionCellVM.completeAction()
                 }
                 TextField("Enter the Task Title", text: $actionCellVM.action.title, onCommit: {self.onCommit(self.actionCellVM.action)})
                 Spacer()
@@ -32,7 +34,7 @@ struct ActionCell: View {
                     .frame(width: 20, height: 20)
                     .padding()
                     .onTapGesture {
-                        print("pencil tap")
+                        self.editingAction = self.actionCellVM.action
                     }
             }
         }.padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
@@ -42,6 +44,6 @@ struct ActionCell: View {
 
 struct ActionCell_Previews: PreviewProvider {
     static var previews: some View {
-        ActionCell(actionCellVM: ActionCellViewModel(action: Action(title: "Test Task")))
+        ActionCell(actionCellVM: ActionCellViewModel(actionRepository: ActionRepository(), action: Action(title: "Test Task")), editingAction: .constant(nil))
     }
 }

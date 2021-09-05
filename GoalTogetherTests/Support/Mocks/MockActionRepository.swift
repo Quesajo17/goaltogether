@@ -22,9 +22,6 @@ class MockActionRepository: ObservableObject, ActionStoreType {
     func loadData() {
         let actionsList = db.actionsCollection
         self.actions = actionsList
-        
-        print("Here's a new printout I'm going to print")
-        print("The actions list fourth action of: \(self.actions[3].title) has a startDate of \(self.actions[3].startDate)")
     }
     
     func addAction(_ action: Action) {

@@ -10,11 +10,9 @@ import SwiftUI
 struct LogoTitleView: View {
     var body: some View {
         VStack {
-            Circle()
-                .fill(
-                    AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center)
-                )
-                .frame(width: 100, height: 100)
+            Image("Icon")
+                .resizable()
+                .frame(width: 150, height: 150)
             Text("GoalTogether")
                 .font(.largeTitle)
                 .fontWeight(.bold)

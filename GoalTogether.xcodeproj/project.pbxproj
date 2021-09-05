@@ -9,7 +9,21 @@
 /* Begin PBXBuildFile section */
 		10E6A011DE1D7AC8708D1A3E /* Pods_GoalTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F75B9D5BAD82DEBB6319BF /* Pods_GoalTogether.framework */; };
 		5FBF78AFE4EEDB8A8B405325 /* Pods_GoalTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E333C915E463DD0E27E6F41B /* Pods_GoalTogetherTests.framework */; };
+		DA076DB92693337100A64126 /* AimActionEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA076DB82693337100A64126 /* AimActionEditViewModel.swift */; };
+		DA1BB470269A564400498C8D /* NewGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1BB46F269A564400498C8D /* NewGroupViewModel.swift */; };
+		DA1BB472269A62E700498C8D /* NewGroupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1BB471269A62E700498C8D /* NewGroupViewModelTests.swift */; };
+		DA212ED326A79F5B00D4F78B /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA212ED226A79F5B00D4F78B /* ErrorTypes.swift */; };
+		DA216568268B3EBA00242FD7 /* AimActionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216567268B3EBA00242FD7 /* AimActionRepository.swift */; };
+		DA21656A268B425200242FD7 /* AimCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216569268B425200242FD7 /* AimCellViewModelTests.swift */; };
+		DA21656C268B478200242FD7 /* MockAimActionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA21656B268B478200242FD7 /* MockAimActionRepository.swift */; };
+		DA30881626B0222700F65400 /* GroupMemberStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA30881526B0222700F65400 /* GroupMemberStoreType.swift */; };
+		DA33725726A5AB43002B544C /* MockUserSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33725626A5AB43002B544C /* MockUserSearchRepository.swift */; };
+		DA47AED426D3CBDB0009C6BB /* GroupHubViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA47AED326D3CBDB0009C6BB /* GroupHubViewModelTests.swift */; };
+		DA47AED626D3CBF70009C6BB /* GroupHubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA47AED526D3CBF70009C6BB /* GroupHubViewModel.swift */; };
+		DA47AED826D3CD1B0009C6BB /* GroupCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA47AED726D3CD1B0009C6BB /* GroupCellViewModel.swift */; };
 		DA4F605E2629B63700766C0F /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4F605D2629B63700766C0F /* UserProfileViewModel.swift */; };
+		DA557AD626599D6C00316548 /* MyAimsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA557AD526599D6C00316548 /* MyAimsRepository.swift */; };
+		DA5A0CC626E3ABEE00ACE696 /* GroupHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A0CC526E3ABEE00ACE696 /* GroupHubView.swift */; };
 		DA5D90AB2618DC8F00220C8E /* GoalTogetherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D90AA2618DC8F00220C8E /* GoalTogetherApp.swift */; };
 		DA5D90AD2618DC8F00220C8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D90AC2618DC8F00220C8E /* ContentView.swift */; };
 		DA5D90AF2618DC9200220C8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5D90AE2618DC9200220C8E /* Assets.xcassets */; };
@@ -35,9 +49,9 @@
 		DA5D91702618E30200220C8E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D916F2618E30200220C8E /* Action.swift */; };
 		DA5D91772618E33800220C8E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91762618E33800220C8E /* DateExtensions.swift */; };
 		DA5D917C2618E35900220C8E /* ActionStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D917B2618E35900220C8E /* ActionStoreType.swift */; };
-		DA5D91812618E3C600220C8E /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91802618E3C600220C8E /* Goal.swift */; };
+		DA5D91812618E3C600220C8E /* Aim.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91802618E3C600220C8E /* Aim.swift */; };
 		DA5D91862618E3F000220C8E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91852618E3F000220C8E /* UserProfile.swift */; };
-		DA5D918B2618E40900220C8E /* MoraleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D918A2618E40900220C8E /* MoraleGroup.swift */; };
+		DA5D918B2618E40900220C8E /* AccountabilityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D918A2618E40900220C8E /* AccountabilityGroup.swift */; };
 		DA5D91902618E41D00220C8E /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D918F2618E41D00220C8E /* Practice.swift */; };
 		DA5D91952618E43800220C8E /* ActionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91942618E43800220C8E /* ActionRepository.swift */; };
 		DA5D919A2618E49400220C8E /* ActionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91992618E49400220C8E /* ActionCellViewModel.swift */; };
@@ -49,11 +63,59 @@
 		DA5D91C22618E72200220C8E /* ActionListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D91C12618E72200220C8E /* ActionListViewModelTests.swift */; };
 		DA5D9219261A083500220C8E /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D9218261A083400220C8E /* AuthenticationState.swift */; };
 		DA5D9225261A0B3A00220C8E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D9224261A0B3A00220C8E /* HomeView.swift */; };
+		DA61B8E6269C6E46002AE912 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA61B8E5269C6E46002AE912 /* UserSearchViewModel.swift */; };
+		DA61B8E8269C7096002AE912 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA61B8E7269C7096002AE912 /* UserCellViewModel.swift */; };
 		DA64E4332642C93800740A05 /* NoProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA64E4322642C93800740A05 /* NoProfileImage.swift */; };
 		DA64E4382642C9A100740A05 /* ViewandUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA64E4372642C9A100740A05 /* ViewandUIView.swift */; };
+		DA68C94726B1DE170099BA42 /* GroupMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA68C94626B1DE170099BA42 /* GroupMember.swift */; };
+		DA6E0E9C26BAA34D00D48BF8 /* MockGroupUserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E0E9B26BAA34D00D48BF8 /* MockGroupUserRepositoryTests.swift */; };
+		DA6E0E9E26BAB23E00D48BF8 /* MockGroupRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E0E9D26BAB23E00D48BF8 /* MockGroupRepositoryTests.swift */; };
+		DA7A6150264A9D2C000502BD /* ActionEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A614F264A9D2C000502BD /* ActionEditViewModel.swift */; };
+		DA7C77602677891500E7EBFC /* SeasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7C775F2677891500E7EBFC /* SeasonView.swift */; };
+		DA7C776826778A2700E7EBFC /* ChooseSeasonLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7C776726778A2700E7EBFC /* ChooseSeasonLength.swift */; };
+		DA80770B268002C200D11182 /* MyAimCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80770A268002C200D11182 /* MyAimCellViewModel.swift */; };
+		DA83E9BD2678D60700493838 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA83E9BC2678D60700493838 /* LoadingScreen.swift */; };
+		DA864BB026972A7000956F94 /* MockGroupsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA864BAF26972A7000956F94 /* MockGroupsRepository.swift */; };
+		DA864BB226972ACC00956F94 /* TestGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA864BB126972ACC00956F94 /* TestGroups.swift */; };
+		DA867DFF268F33BA001E793E /* AimActionSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA867DFE268F33BA001E793E /* AimActionSubCell.swift */; };
 		DA8DE4512632604900F7A16F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8DE4502632604900F7A16F /* ImagePicker.swift */; };
 		DA911E7A264770600014FFAF /* CurrentUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA911E79264770600014FFAF /* CurrentUserProfile.swift */; };
+		DA98CD77269885D2007FC47F /* UserStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98CD76269885D2007FC47F /* UserStoreType.swift */; };
+		DA98CD79269886FA007FC47F /* GroupMemberUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98CD78269886FA007FC47F /* GroupMemberUserRepository.swift */; };
+		DA98CD7B26988C00007FC47F /* MockGroupMemberUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98CD7A26988C00007FC47F /* MockGroupMemberUserRepository.swift */; };
+		DAA4D9CB26948355006C39AC /* SingleGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4D9CA26948355006C39AC /* SingleGroupViewModel.swift */; };
+		DAA4D9CE2694837F006C39AC /* SingleGroupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4D9CD2694837F006C39AC /* SingleGroupViewModelTests.swift */; };
+		DAA4D9D02694846E006C39AC /* MyGroupsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4D9CF2694846E006C39AC /* MyGroupsRepository.swift */; };
+		DAA96060265BC0BE00812182 /* SeasonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9605F265BC0BE00812182 /* SeasonRepository.swift */; };
+		DAAA8C2B26A05AC7004031E8 /* MemberCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAA8C2A26A05AC7004031E8 /* MemberCellView.swift */; };
+		DAAA8C2D26A05E3B004031E8 /* UserSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAA8C2C26A05E3B004031E8 /* UserSearchRepository.swift */; };
+		DAB015AE266F9E2100D930DD /* CurrentUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB015AD266F9E2100D930DD /* CurrentUserType.swift */; };
+		DAB015B3266F9F8D00D930DD /* MockCurrentUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB015B2266F9F8D00D930DD /* MockCurrentUserProfile.swift */; };
+		DABE6A1D268615FE00A1C650 /* AimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABE6A1C268615FE00A1C650 /* AimCell.swift */; };
+		DAC1A1A926A330780025509B /* SearchPageUserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1A1A826A330780025509B /* SearchPageUserCellView.swift */; };
+		DAC1A1AB26A34AA80025509B /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1A1AA26A34AA80025509B /* UserSearchView.swift */; };
+		DAC1A1AD26A34C530025509B /* InviteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1A1AC26A34C530025509B /* InviteUserView.swift */; };
+		DAC42A5E2653DA3F006B28AD /* SeasonAimsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC42A5D2653DA3F006B28AD /* SeasonAimsViewModel.swift */; };
+		DAC42A632653DA8D006B28AD /* SeasonAimsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC42A622653DA8D006B28AD /* SeasonAimsViewModel.swift */; };
+		DAC42A682653DB10006B28AD /* MockAimsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC42A672653DB10006B28AD /* MockAimsRepository.swift */; };
+		DAC42A6D2653DB49006B28AD /* AimStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC42A6C2653DB49006B28AD /* AimStoreType.swift */; };
+		DAC42A722653DC1F006B28AD /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC42A712653DC1F006B28AD /* Season.swift */; };
 		DACCA56E2636E7DD00B8F6C8 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACCA56D2636E7DD00B8F6C8 /* ProfileImage.swift */; };
+		DACD621F2694890500B5E50C /* GroupStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACD621E2694890500B5E50C /* GroupStoreType.swift */; };
+		DACEAF34265531470049B833 /* TestAims.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEAF33265531470049B833 /* TestAims.swift */; };
+		DACEAF39265539A40049B833 /* TestUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEAF38265539A40049B833 /* TestUserProfile.swift */; };
+		DACEAF3F26553D900049B833 /* SeasonDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEAF3E26553D900049B833 /* SeasonDates.swift */; };
+		DAD2E076269F148800E389F6 /* NewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2E075269F148800E389F6 /* NewGroupView.swift */; };
+		DADB2C7626A0640C00BC73F9 /* AnyUserProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB2C7526A0640C00BC73F9 /* AnyUserProfileImage.swift */; };
+		DADC252726AB5D7C0017F44A /* ActiveMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC252626AB5D7C0017F44A /* ActiveMemberViewModel.swift */; };
+		DADC252926AB5D890017F44A /* PendingMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC252826AB5D890017F44A /* PendingMemberViewModel.swift */; };
+		DAE22B212659B3A5003FAFB2 /* MockSeasonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE22B202659B3A5003FAFB2 /* MockSeasonRepository.swift */; };
+		DAE22B262659B3BB003FAFB2 /* TestSeasons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE22B252659B3BB003FAFB2 /* TestSeasons.swift */; };
+		DAE22B2B2659B4BD003FAFB2 /* SeasonStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE22B2A2659B4BD003FAFB2 /* SeasonStoreType.swift */; };
+		DAF489BC264959E200A367E6 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF489BB264959E200A367E6 /* GlobalFunctions.swift */; };
+		DAF6FBFA26E1A5AE00CA8A9E /* GroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF6FBF926E1A5AE00CA8A9E /* GroupCellView.swift */; };
+		DAFE6F69268999E400C3B0AA /* AimEditPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE6F68268999E400C3B0AA /* AimEditPage.swift */; };
+		DAFE6F6B26899CA800C3B0AA /* AimEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE6F6A26899CA800C3B0AA /* AimEditViewModel.swift */; };
 		F45184ACF6C009C8F8531983 /* Pods_GoalTogether_GoalTogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7572D6A966C2734B9BED07F /* Pods_GoalTogether_GoalTogetherUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +143,21 @@
 		B7FB69847347C8245AFA9C06 /* Pods-GoalTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogether/Pods-GoalTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		BAFA60B9D3B93E9D0B4F35D8 /* Pods-GoalTogether-GoalTogetherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether-GoalTogetherUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogether-GoalTogetherUITests/Pods-GoalTogether-GoalTogetherUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C04B33D249E2A9682B4CBD6E /* Pods-GoalTogether-GoalTogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogether-GoalTogetherUITests.release.xcconfig"; path = "Target Support Files/Pods-GoalTogether-GoalTogetherUITests/Pods-GoalTogether-GoalTogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DA076DB82693337100A64126 /* AimActionEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimActionEditViewModel.swift; sourceTree = "<group>"; };
+		DA1BB46F269A564400498C8D /* NewGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModel.swift; sourceTree = "<group>"; };
+		DA1BB471269A62E700498C8D /* NewGroupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewModelTests.swift; sourceTree = "<group>"; };
+		DA212ED226A79F5B00D4F78B /* ErrorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
+		DA216567268B3EBA00242FD7 /* AimActionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimActionRepository.swift; sourceTree = "<group>"; };
+		DA216569268B425200242FD7 /* AimCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimCellViewModelTests.swift; sourceTree = "<group>"; };
+		DA21656B268B478200242FD7 /* MockAimActionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAimActionRepository.swift; sourceTree = "<group>"; };
+		DA30881526B0222700F65400 /* GroupMemberStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberStoreType.swift; sourceTree = "<group>"; };
+		DA33725626A5AB43002B544C /* MockUserSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserSearchRepository.swift; sourceTree = "<group>"; };
+		DA47AED326D3CBDB0009C6BB /* GroupHubViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHubViewModelTests.swift; sourceTree = "<group>"; };
+		DA47AED526D3CBF70009C6BB /* GroupHubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHubViewModel.swift; sourceTree = "<group>"; };
+		DA47AED726D3CD1B0009C6BB /* GroupCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCellViewModel.swift; sourceTree = "<group>"; };
 		DA4F605D2629B63700766C0F /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		DA557AD526599D6C00316548 /* MyAimsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAimsRepository.swift; sourceTree = "<group>"; };
+		DA5A0CC526E3ABEE00ACE696 /* GroupHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHubView.swift; sourceTree = "<group>"; };
 		DA5D90A72618DC8F00220C8E /* GoalTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D90AA2618DC8F00220C8E /* GoalTogetherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTogetherApp.swift; sourceTree = "<group>"; };
 		DA5D90AC2618DC8F00220C8E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,9 +187,9 @@
 		DA5D916F2618E30200220C8E /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		DA5D91762618E33800220C8E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		DA5D917B2618E35900220C8E /* ActionStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionStoreType.swift; sourceTree = "<group>"; };
-		DA5D91802618E3C600220C8E /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		DA5D91802618E3C600220C8E /* Aim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aim.swift; sourceTree = "<group>"; };
 		DA5D91852618E3F000220C8E /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		DA5D918A2618E40900220C8E /* MoraleGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoraleGroup.swift; sourceTree = "<group>"; };
+		DA5D918A2618E40900220C8E /* AccountabilityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountabilityGroup.swift; sourceTree = "<group>"; };
 		DA5D918F2618E41D00220C8E /* Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
 		DA5D91942618E43800220C8E /* ActionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRepository.swift; sourceTree = "<group>"; };
 		DA5D91992618E49400220C8E /* ActionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCellViewModel.swift; sourceTree = "<group>"; };
@@ -126,11 +202,59 @@
 		DA5D92072618FE6200220C8E /* GoalTogether.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoalTogether.entitlements; sourceTree = "<group>"; };
 		DA5D9218261A083400220C8E /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 		DA5D9224261A0B3A00220C8E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DA61B8E5269C6E46002AE912 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
+		DA61B8E7269C7096002AE912 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		DA64E4322642C93800740A05 /* NoProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoProfileImage.swift; sourceTree = "<group>"; };
 		DA64E4372642C9A100740A05 /* ViewandUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewandUIView.swift; sourceTree = "<group>"; };
+		DA68C94626B1DE170099BA42 /* GroupMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMember.swift; sourceTree = "<group>"; };
+		DA6E0E9B26BAA34D00D48BF8 /* MockGroupUserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGroupUserRepositoryTests.swift; sourceTree = "<group>"; };
+		DA6E0E9D26BAB23E00D48BF8 /* MockGroupRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGroupRepositoryTests.swift; sourceTree = "<group>"; };
+		DA7A614F264A9D2C000502BD /* ActionEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditViewModel.swift; sourceTree = "<group>"; };
+		DA7C775F2677891500E7EBFC /* SeasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonView.swift; sourceTree = "<group>"; };
+		DA7C776726778A2700E7EBFC /* ChooseSeasonLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSeasonLength.swift; sourceTree = "<group>"; };
+		DA80770A268002C200D11182 /* MyAimCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAimCellViewModel.swift; sourceTree = "<group>"; };
+		DA83E9BC2678D60700493838 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		DA864BAF26972A7000956F94 /* MockGroupsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGroupsRepository.swift; sourceTree = "<group>"; };
+		DA864BB126972ACC00956F94 /* TestGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGroups.swift; sourceTree = "<group>"; };
+		DA867DFE268F33BA001E793E /* AimActionSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimActionSubCell.swift; sourceTree = "<group>"; };
 		DA8DE4502632604900F7A16F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DA911E79264770600014FFAF /* CurrentUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProfile.swift; sourceTree = "<group>"; };
+		DA98CD76269885D2007FC47F /* UserStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreType.swift; sourceTree = "<group>"; };
+		DA98CD78269886FA007FC47F /* GroupMemberUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberUserRepository.swift; sourceTree = "<group>"; };
+		DA98CD7A26988C00007FC47F /* MockGroupMemberUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGroupMemberUserRepository.swift; sourceTree = "<group>"; };
+		DAA4D9CA26948355006C39AC /* SingleGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGroupViewModel.swift; sourceTree = "<group>"; };
+		DAA4D9CD2694837F006C39AC /* SingleGroupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGroupViewModelTests.swift; sourceTree = "<group>"; };
+		DAA4D9CF2694846E006C39AC /* MyGroupsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsRepository.swift; sourceTree = "<group>"; };
+		DAA9605F265BC0BE00812182 /* SeasonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonRepository.swift; sourceTree = "<group>"; };
+		DAAA8C2A26A05AC7004031E8 /* MemberCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCellView.swift; sourceTree = "<group>"; };
+		DAAA8C2C26A05E3B004031E8 /* UserSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchRepository.swift; sourceTree = "<group>"; };
+		DAB015AD266F9E2100D930DD /* CurrentUserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserType.swift; sourceTree = "<group>"; };
+		DAB015B2266F9F8D00D930DD /* MockCurrentUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrentUserProfile.swift; sourceTree = "<group>"; };
+		DABE6A1C268615FE00A1C650 /* AimCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimCell.swift; sourceTree = "<group>"; };
+		DAC1A1A826A330780025509B /* SearchPageUserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageUserCellView.swift; sourceTree = "<group>"; };
+		DAC1A1AA26A34AA80025509B /* UserSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
+		DAC1A1AC26A34C530025509B /* InviteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUserView.swift; sourceTree = "<group>"; };
+		DAC42A5D2653DA3F006B28AD /* SeasonAimsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonAimsViewModel.swift; sourceTree = "<group>"; };
+		DAC42A622653DA8D006B28AD /* SeasonAimsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonAimsViewModel.swift; sourceTree = "<group>"; };
+		DAC42A672653DB10006B28AD /* MockAimsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAimsRepository.swift; sourceTree = "<group>"; };
+		DAC42A6C2653DB49006B28AD /* AimStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimStoreType.swift; sourceTree = "<group>"; };
+		DAC42A712653DC1F006B28AD /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		DACCA56D2636E7DD00B8F6C8 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		DACD621E2694890500B5E50C /* GroupStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStoreType.swift; sourceTree = "<group>"; };
+		DACEAF33265531470049B833 /* TestAims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAims.swift; sourceTree = "<group>"; };
+		DACEAF38265539A40049B833 /* TestUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserProfile.swift; sourceTree = "<group>"; };
+		DACEAF3E26553D900049B833 /* SeasonDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDates.swift; sourceTree = "<group>"; };
+		DAD2E075269F148800E389F6 /* NewGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupView.swift; sourceTree = "<group>"; };
+		DADB2C7526A0640C00BC73F9 /* AnyUserProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyUserProfileImage.swift; sourceTree = "<group>"; };
+		DADC252626AB5D7C0017F44A /* ActiveMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveMemberViewModel.swift; path = ../../../../../../../../../Applications/ActiveMemberViewModel.swift; sourceTree = "<group>"; };
+		DADC252826AB5D890017F44A /* PendingMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingMemberViewModel.swift; sourceTree = "<group>"; };
+		DAE22B202659B3A5003FAFB2 /* MockSeasonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeasonRepository.swift; sourceTree = "<group>"; };
+		DAE22B252659B3BB003FAFB2 /* TestSeasons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSeasons.swift; sourceTree = "<group>"; };
+		DAE22B2A2659B4BD003FAFB2 /* SeasonStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonStoreType.swift; sourceTree = "<group>"; };
+		DAF489BB264959E200A367E6 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		DAF6FBF926E1A5AE00CA8A9E /* GroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCellView.swift; sourceTree = "<group>"; };
+		DAFE6F68268999E400C3B0AA /* AimEditPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimEditPage.swift; sourceTree = "<group>"; };
+		DAFE6F6A26899CA800C3B0AA /* AimEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimEditViewModel.swift; sourceTree = "<group>"; };
 		E333C915E463DD0E27E6F41B /* Pods_GoalTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7572D6A966C2734B9BED07F /* Pods_GoalTogether_GoalTogetherUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoalTogether_GoalTogetherUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC1D3ED8C16AF99D2100EEA /* Pods-GoalTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoalTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-GoalTogetherTests/Pods-GoalTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +309,14 @@
 				E333C915E463DD0E27E6F41B /* Pods_GoalTogetherTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA212ED126A79F3500D4F78B /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				DA212ED226A79F5B00D4F78B /* ErrorTypes.swift */,
+			);
+			path = "Error Handling";
 			sourceTree = "<group>";
 		};
 		DA5D909E2618DC8F00220C8E = {
@@ -273,7 +405,10 @@
 		DA5D90D92618DCBE00220C8E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DAA4D9C92694830D006C39AC /* Groups */,
+				DA8077072680026300D11182 /* SeasonPage */,
 				DA5D91992618E49400220C8E /* ActionCellViewModel.swift */,
+				DA7A614F264A9D2C000502BD /* ActionEditViewModel.swift */,
 				DA5D919E2618E4A700220C8E /* ActionListViewModel.swift */,
 				DA4F605D2629B63700766C0F /* UserProfileViewModel.swift */,
 			);
@@ -283,7 +418,8 @@
 		DA5D90DA2618DCC500220C8E /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				DA5D91942618E43800220C8E /* ActionRepository.swift */,
+				DAA4D9C8269482FA006C39AC /* Groups */,
+				DAB015A9266F9AC700D930DD /* MyUser */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -292,11 +428,13 @@
 			isa = PBXGroup;
 			children = (
 				DA5D916F2618E30200220C8E /* Action.swift */,
-				DA5D91802618E3C600220C8E /* Goal.swift */,
+				DA5D91802618E3C600220C8E /* Aim.swift */,
 				DA5D91852618E3F000220C8E /* UserProfile.swift */,
-				DA5D918A2618E40900220C8E /* MoraleGroup.swift */,
+				DA5D918A2618E40900220C8E /* AccountabilityGroup.swift */,
 				DA5D918F2618E41D00220C8E /* Practice.swift */,
 				DA5D9100261B2EE400FF3D6C /* AuthenticationType.swift */,
+				DAC42A712653DC1F006B28AD /* Season.swift */,
+				DA68C94626B1DE170099BA42 /* GroupMember.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -304,12 +442,15 @@
 		DA5D90DC2618DCD400220C8E /* AppServices */ = {
 			isa = PBXGroup;
 			children = (
+				DA212ED126A79F3500D4F78B /* Error Handling */,
+				DACEAF3D26553D7F0049B833 /* Dates */,
 				DAFF3EC726398EF1008B8878 /* Firebase */,
 				DAFF3EC626398A9C008B8878 /* UIViewElements */,
 				DA5D9114261B37F000FF3D6C /* Styles */,
 				DA5D921D261A083800220C8E /* Authentication */,
 				DA5D91752618E32B00220C8E /* Protocols */,
 				DA5D91742618E31E00220C8E /* Extensions */,
+				DAF489BB264959E200A367E6 /* GlobalFunctions.swift */,
 			);
 			path = AppServices;
 			sourceTree = "<group>";
@@ -328,7 +469,11 @@
 		DA5D90DE2618DD0F00220C8E /* SeasonPage */ = {
 			isa = PBXGroup;
 			children = (
+				DABE6A1B2686158B00A1C650 /* AimSubViews */,
 				DA5D91562618E20100220C8E /* SeasonPage.swift */,
+				DA7C776726778A2700E7EBFC /* ChooseSeasonLength.swift */,
+				DA7C775F2677891500E7EBFC /* SeasonView.swift */,
+				DA83E9BC2678D60700493838 /* LoadingScreen.swift */,
 			);
 			path = SeasonPage;
 			sourceTree = "<group>";
@@ -361,7 +506,13 @@
 		DA5D90E22618DD2E00220C8E /* GroupsPage */ = {
 			isa = PBXGroup;
 			children = (
+				DAC1A1A726A330490025509B /* FriendSearch */,
 				DA5D916A2618E25300220C8E /* GroupsPage.swift */,
+				DAD2E075269F148800E389F6 /* NewGroupView.swift */,
+				DAAA8C2A26A05AC7004031E8 /* MemberCellView.swift */,
+				DADB2C7526A0640C00BC73F9 /* AnyUserProfileImage.swift */,
+				DAF6FBF926E1A5AE00CA8A9E /* GroupCellView.swift */,
+				DA5A0CC526E3ABEE00ACE696 /* GroupHubView.swift */,
 			);
 			path = GroupsPage;
 			sourceTree = "<group>";
@@ -399,6 +550,12 @@
 			isa = PBXGroup;
 			children = (
 				DA5D917B2618E35900220C8E /* ActionStoreType.swift */,
+				DAC42A6C2653DB49006B28AD /* AimStoreType.swift */,
+				DAE22B2A2659B4BD003FAFB2 /* SeasonStoreType.swift */,
+				DAB015AD266F9E2100D930DD /* CurrentUserType.swift */,
+				DACD621E2694890500B5E50C /* GroupStoreType.swift */,
+				DA98CD76269885D2007FC47F /* UserStoreType.swift */,
+				DA30881526B0222700F65400 /* GroupMemberStoreType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -416,6 +573,10 @@
 			isa = PBXGroup;
 			children = (
 				DA5D91AF2618E6C800220C8E /* TestActions.swift */,
+				DACEAF33265531470049B833 /* TestAims.swift */,
+				DACEAF38265539A40049B833 /* TestUserProfile.swift */,
+				DAE22B252659B3BB003FAFB2 /* TestSeasons.swift */,
+				DA864BB126972ACC00956F94 /* TestGroups.swift */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -424,6 +585,13 @@
 			isa = PBXGroup;
 			children = (
 				DA5D91B82618E6E900220C8E /* MockActionRepository.swift */,
+				DAC42A672653DB10006B28AD /* MockAimsRepository.swift */,
+				DAE22B202659B3A5003FAFB2 /* MockSeasonRepository.swift */,
+				DAB015B2266F9F8D00D930DD /* MockCurrentUserProfile.swift */,
+				DA21656B268B478200242FD7 /* MockAimActionRepository.swift */,
+				DA864BAF26972A7000956F94 /* MockGroupsRepository.swift */,
+				DA98CD7A26988C00007FC47F /* MockGroupMemberUserRepository.swift */,
+				DA33725626A5AB43002B544C /* MockUserSearchRepository.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -431,7 +599,10 @@
 		DA5D91C02618E70A00220C8E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				DAA4D9CC26948360006C39AC /* Groups */,
 				DA5D91C12618E72200220C8E /* ActionListViewModelTests.swift */,
+				DAC42A5D2653DA3F006B28AD /* SeasonAimsViewModel.swift */,
+				DA216569268B425200242FD7 /* AimCellViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -440,9 +611,112 @@
 			isa = PBXGroup;
 			children = (
 				DA5D9218261A083400220C8E /* AuthenticationState.swift */,
-				DA911E79264770600014FFAF /* CurrentUserProfile.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		DA6E0E9A26BAA29B00D48BF8 /* GroupUserMethods */ = {
+			isa = PBXGroup;
+			children = (
+				DA6E0E9B26BAA34D00D48BF8 /* MockGroupUserRepositoryTests.swift */,
+				DA6E0E9D26BAB23E00D48BF8 /* MockGroupRepositoryTests.swift */,
+			);
+			path = GroupUserMethods;
+			sourceTree = "<group>";
+		};
+		DA8077072680026300D11182 /* SeasonPage */ = {
+			isa = PBXGroup;
+			children = (
+				DA076DB82693337100A64126 /* AimActionEditViewModel.swift */,
+				DAC42A622653DA8D006B28AD /* SeasonAimsViewModel.swift */,
+				DA80770A268002C200D11182 /* MyAimCellViewModel.swift */,
+				DAFE6F6A26899CA800C3B0AA /* AimEditViewModel.swift */,
+			);
+			path = SeasonPage;
+			sourceTree = "<group>";
+		};
+		DAA4D9C8269482FA006C39AC /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				DAA4D9CF2694846E006C39AC /* MyGroupsRepository.swift */,
+				DA98CD78269886FA007FC47F /* GroupMemberUserRepository.swift */,
+				DAAA8C2C26A05E3B004031E8 /* UserSearchRepository.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		DAA4D9C92694830D006C39AC /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				DADC252526AB5D600017F44A /* Members */,
+				DAA4D9CA26948355006C39AC /* SingleGroupViewModel.swift */,
+				DA1BB46F269A564400498C8D /* NewGroupViewModel.swift */,
+				DA61B8E5269C6E46002AE912 /* UserSearchViewModel.swift */,
+				DA61B8E7269C7096002AE912 /* UserCellViewModel.swift */,
+				DA47AED526D3CBF70009C6BB /* GroupHubViewModel.swift */,
+				DA47AED726D3CD1B0009C6BB /* GroupCellViewModel.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		DAA4D9CC26948360006C39AC /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				DA6E0E9A26BAA29B00D48BF8 /* GroupUserMethods */,
+				DAA4D9CD2694837F006C39AC /* SingleGroupViewModelTests.swift */,
+				DA1BB471269A62E700498C8D /* NewGroupViewModelTests.swift */,
+				DA47AED326D3CBDB0009C6BB /* GroupHubViewModelTests.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		DAB015A9266F9AC700D930DD /* MyUser */ = {
+			isa = PBXGroup;
+			children = (
+				DA5D91942618E43800220C8E /* ActionRepository.swift */,
+				DA557AD526599D6C00316548 /* MyAimsRepository.swift */,
+				DAA9605F265BC0BE00812182 /* SeasonRepository.swift */,
+				DA911E79264770600014FFAF /* CurrentUserProfile.swift */,
+				DA216567268B3EBA00242FD7 /* AimActionRepository.swift */,
+			);
+			path = MyUser;
+			sourceTree = "<group>";
+		};
+		DABE6A1B2686158B00A1C650 /* AimSubViews */ = {
+			isa = PBXGroup;
+			children = (
+				DABE6A1C268615FE00A1C650 /* AimCell.swift */,
+				DAFE6F68268999E400C3B0AA /* AimEditPage.swift */,
+				DA867DFE268F33BA001E793E /* AimActionSubCell.swift */,
+			);
+			path = AimSubViews;
+			sourceTree = "<group>";
+		};
+		DAC1A1A726A330490025509B /* FriendSearch */ = {
+			isa = PBXGroup;
+			children = (
+				DAC1A1A826A330780025509B /* SearchPageUserCellView.swift */,
+				DAC1A1AA26A34AA80025509B /* UserSearchView.swift */,
+				DAC1A1AC26A34C530025509B /* InviteUserView.swift */,
+			);
+			path = FriendSearch;
+			sourceTree = "<group>";
+		};
+		DACEAF3D26553D7F0049B833 /* Dates */ = {
+			isa = PBXGroup;
+			children = (
+				DACEAF3E26553D900049B833 /* SeasonDates.swift */,
+			);
+			path = Dates;
+			sourceTree = "<group>";
+		};
+		DADC252526AB5D600017F44A /* Members */ = {
+			isa = PBXGroup;
+			children = (
+				DADC252626AB5D7C0017F44A /* ActiveMemberViewModel.swift */,
+				DADC252826AB5D890017F44A /* PendingMemberViewModel.swift */,
+			);
+			path = Members;
 			sourceTree = "<group>";
 		};
 		DAFF3EC626398A9C008B8878 /* UIViewElements */ = {
@@ -737,41 +1011,85 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1BB470269A564400498C8D /* NewGroupViewModel.swift in Sources */,
+				DA47AED826D3CD1B0009C6BB /* GroupCellViewModel.swift in Sources */,
 				DA64E4332642C93800740A05 /* NoProfileImage.swift in Sources */,
+				DAC42A6D2653DB49006B28AD /* AimStoreType.swift in Sources */,
+				DA076DB92693337100A64126 /* AimActionEditViewModel.swift in Sources */,
 				DA5D910B261B354D00FF3D6C /* LogoTitleView.swift in Sources */,
+				DACEAF3F26553D900049B833 /* SeasonDates.swift in Sources */,
 				DACCA56E2636E7DD00B8F6C8 /* ProfileImage.swift in Sources */,
+				DADB2C7626A0640C00BC73F9 /* AnyUserProfileImage.swift in Sources */,
+				DA68C94726B1DE170099BA42 /* GroupMember.swift in Sources */,
 				DA5D91662618E24100220C8E /* SettingsPage.swift in Sources */,
 				DA5D91702618E30200220C8E /* Action.swift in Sources */,
 				DA5D91522618E1EB00220C8E /* HomePage.swift in Sources */,
+				DAAA8C2B26A05AC7004031E8 /* MemberCellView.swift in Sources */,
 				DA5D9225261A0B3A00220C8E /* HomeView.swift in Sources */,
 				DA5D90FC261B2E9400FF3D6C /* AuthenticationView.swift in Sources */,
-				DA5D918B2618E40900220C8E /* MoraleGroup.swift in Sources */,
+				DA5D918B2618E40900220C8E /* AccountabilityGroup.swift in Sources */,
+				DAA4D9D02694846E006C39AC /* MyGroupsRepository.swift in Sources */,
+				DAC1A1A926A330780025509B /* SearchPageUserCellView.swift in Sources */,
+				DAE22B2B2659B4BD003FAFB2 /* SeasonStoreType.swift in Sources */,
 				DA5D90AD2618DC8F00220C8E /* ContentView.swift in Sources */,
+				DAB015AE266F9E2100D930DD /* CurrentUserType.swift in Sources */,
+				DAFE6F6B26899CA800C3B0AA /* AimEditViewModel.swift in Sources */,
 				DA5D9106261B320200FF3D6C /* SplashScreenView.swift in Sources */,
+				DA98CD79269886FA007FC47F /* GroupMemberUserRepository.swift in Sources */,
+				DA867DFF268F33BA001E793E /* AimActionSubCell.swift in Sources */,
 				DA5D91612618E22F00220C8E /* ProfilePage.swift in Sources */,
 				DA5D91A42618E4F700220C8E /* ActionCell.swift in Sources */,
+				DA61B8E8269C7096002AE912 /* UserCellViewModel.swift in Sources */,
 				DA5D917C2618E35900220C8E /* ActionStoreType.swift in Sources */,
+				DA7A6150264A9D2C000502BD /* ActionEditViewModel.swift in Sources */,
 				DA5D9110261B362400FF3D6C /* AuthenticationFormView.swift in Sources */,
-				DA5D91812618E3C600220C8E /* Goal.swift in Sources */,
+				DAC1A1AD26A34C530025509B /* InviteUserView.swift in Sources */,
+				DA557AD626599D6C00316548 /* MyAimsRepository.swift in Sources */,
+				DAF6FBFA26E1A5AE00CA8A9E /* GroupCellView.swift in Sources */,
+				DA5D91812618E3C600220C8E /* Aim.swift in Sources */,
 				DA5D919A2618E49400220C8E /* ActionCellViewModel.swift in Sources */,
 				DA5D91772618E33800220C8E /* DateExtensions.swift in Sources */,
 				DA5D919F2618E4A700220C8E /* ActionListViewModel.swift in Sources */,
 				DA4F605E2629B63700766C0F /* UserProfileViewModel.swift in Sources */,
 				DA911E7A264770600014FFAF /* CurrentUserProfile.swift in Sources */,
+				DADC252726AB5D7C0017F44A /* ActiveMemberViewModel.swift in Sources */,
 				DA5D9101261B2EE400FF3D6C /* AuthenticationType.swift in Sources */,
+				DAA96060265BC0BE00812182 /* SeasonRepository.swift in Sources */,
 				DA5D9219261A083500220C8E /* AuthenticationState.swift in Sources */,
+				DA7C776826778A2700E7EBFC /* ChooseSeasonLength.swift in Sources */,
+				DA5A0CC626E3ABEE00ACE696 /* GroupHubView.swift in Sources */,
+				DAA4D9CB26948355006C39AC /* SingleGroupViewModel.swift in Sources */,
+				DAC42A632653DA8D006B28AD /* SeasonAimsViewModel.swift in Sources */,
+				DA47AED626D3CBF70009C6BB /* GroupHubViewModel.swift in Sources */,
+				DA80770B268002C200D11182 /* MyAimCellViewModel.swift in Sources */,
 				DA5D91902618E41D00220C8E /* Practice.swift in Sources */,
 				DA5D9116261B380200FF3D6C /* GeneralButtonStyle.swift in Sources */,
 				DA5D91862618E3F000220C8E /* UserProfile.swift in Sources */,
+				DA30881626B0222700F65400 /* GroupMemberStoreType.swift in Sources */,
+				DA212ED326A79F5B00D4F78B /* ErrorTypes.swift in Sources */,
+				DAF489BC264959E200A367E6 /* GlobalFunctions.swift in Sources */,
 				DA8DE4512632604900F7A16F /* ImagePicker.swift in Sources */,
 				DA5D91952618E43800220C8E /* ActionRepository.swift in Sources */,
+				DAC42A722653DC1F006B28AD /* Season.swift in Sources */,
+				DAC1A1AB26A34AA80025509B /* UserSearchView.swift in Sources */,
+				DA216568268B3EBA00242FD7 /* AimActionRepository.swift in Sources */,
 				DA5D916B2618E25300220C8E /* GroupsPage.swift in Sources */,
+				DADC252926AB5D890017F44A /* PendingMemberViewModel.swift in Sources */,
+				DA98CD77269885D2007FC47F /* UserStoreType.swift in Sources */,
+				DAAA8C2D26A05E3B004031E8 /* UserSearchRepository.swift in Sources */,
+				DABE6A1D268615FE00A1C650 /* AimCell.swift in Sources */,
 				DA5D91452618E16800220C8E /* SignInWithAppleButton.swift in Sources */,
 				DA5D915C2618E21B00220C8E /* FriendsPage.swift in Sources */,
+				DA83E9BD2678D60700493838 /* LoadingScreen.swift in Sources */,
+				DACD621F2694890500B5E50C /* GroupStoreType.swift in Sources */,
+				DA61B8E6269C6E46002AE912 /* UserSearchViewModel.swift in Sources */,
 				DA5D91A92618E50500220C8E /* ActionEditPage.swift in Sources */,
+				DAFE6F69268999E400C3B0AA /* AimEditPage.swift in Sources */,
+				DA7C77602677891500E7EBFC /* SeasonView.swift in Sources */,
 				DA64E4382642C9A100740A05 /* ViewandUIView.swift in Sources */,
 				DA5D90AB2618DC8F00220C8E /* GoalTogetherApp.swift in Sources */,
 				DA5D91572618E20100220C8E /* SeasonPage.swift in Sources */,
+				DAD2E076269F148800E389F6 /* NewGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,10 +1097,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA21656A268B425200242FD7 /* AimCellViewModelTests.swift in Sources */,
+				DACEAF39265539A40049B833 /* TestUserProfile.swift in Sources */,
+				DA6E0E9C26BAA34D00D48BF8 /* MockGroupUserRepositoryTests.swift in Sources */,
+				DA33725726A5AB43002B544C /* MockUserSearchRepository.swift in Sources */,
 				DA5D90BD2618DC9200220C8E /* GoalTogetherTests.swift in Sources */,
+				DA21656C268B478200242FD7 /* MockAimActionRepository.swift in Sources */,
 				DA5D91B02618E6C800220C8E /* TestActions.swift in Sources */,
 				DA5D91C22618E72200220C8E /* ActionListViewModelTests.swift in Sources */,
+				DAA4D9CE2694837F006C39AC /* SingleGroupViewModelTests.swift in Sources */,
+				DA6E0E9E26BAB23E00D48BF8 /* MockGroupRepositoryTests.swift in Sources */,
+				DA47AED426D3CBDB0009C6BB /* GroupHubViewModelTests.swift in Sources */,
+				DAE22B262659B3BB003FAFB2 /* TestSeasons.swift in Sources */,
 				DA5D91B92618E6E900220C8E /* MockActionRepository.swift in Sources */,
+				DAE22B212659B3A5003FAFB2 /* MockSeasonRepository.swift in Sources */,
+				DACEAF34265531470049B833 /* TestAims.swift in Sources */,
+				DA1BB472269A62E700498C8D /* NewGroupViewModelTests.swift in Sources */,
+				DA864BB226972ACC00956F94 /* TestGroups.swift in Sources */,
+				DA864BB026972A7000956F94 /* MockGroupsRepository.swift in Sources */,
+				DAC42A682653DB10006B28AD /* MockAimsRepository.swift in Sources */,
+				DAB015B3266F9F8D00D930DD /* MockCurrentUserProfile.swift in Sources */,
+				DA98CD7B26988C00007FC47F /* MockGroupMemberUserRepository.swift in Sources */,
+				DAC42A5E2653DA3F006B28AD /* SeasonAimsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

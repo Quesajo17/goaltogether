@@ -13,9 +13,9 @@ class TestActions {
     
     init() {
         self.actionsCollection = [
-            Action(title: "First test action, due today"),
-            Action(title: "Second action to be modified"),
-            Action(title: "Action from yesterday", startDate: Date().yesterdayAlmostMidnight()),
+            Action(title: "First test action, due today", aimId: "Goal1"),
+            Action(title: "Second action to be modified", aimId: "Goal1"),
+            Action(title: "Action from yesterday", startDate: Date().yesterday(.end)),
             Action(title: "Action for beginning of next week", startDate: Date().endOfWeekDate().tomorrowDate()),
             Action(title: "Action for the beginning of the second week", startDate: Date().endOfWeekDate().tomorrowDate().endOfWeekDate().tomorrowDate())
         ]

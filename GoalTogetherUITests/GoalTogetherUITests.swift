@@ -4,6 +4,7 @@
 //
 //  Created by Charlie Page on 4/3/21.
 //
+/*
 
 import XCTest
 
@@ -40,3 +41,5 @@ class GoalTogetherUITests: XCTestCase {
         }
     }
 }
+
+ */

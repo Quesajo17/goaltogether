@@ -8,28 +8,33 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var actionListVM = ActionListViewModel()
+    @StateObject var seasonAimsVM = SeasonAimsViewModel()
+    
+    @State var selection = 0
+    
     var body: some View {
-        TabView {
-            HomePage()
+        TabView(selection: $selection) {
+            HomePage(actionListVM: actionListVM)
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-            SeasonPage()
+                .tag(0)
+            SeasonView(seasonAimsVM: seasonAimsVM)
                 .tabItem {
                     Label("Season", systemImage: "scribble.variable")
                 }
+                .tag(1)
             GroupsPage()
                 .tabItem {
                     Label("Groups", systemImage: "person.2.fill")
                 }
+                .tag(2)
             FriendsPage()
                 .tabItem {
                     Label("Friends", systemImage: "person.crop.circle.badge.plus")
                 }
-            ProfilePage()
-                .tabItem {
-                    Label("Profile", systemImage: "person.circle")
-                }
+                .tag(3)
         }
     }
 }

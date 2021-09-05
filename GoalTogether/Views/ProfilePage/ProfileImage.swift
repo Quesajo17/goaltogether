@@ -20,7 +20,7 @@ struct ProfileImage: View {
                     .scaledToFill()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.black, lineWidth: 4))
+                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     .overlay(
                         CircleOverlay()
                     )
@@ -36,7 +36,7 @@ struct ProfileImage: View {
                     .frame(width: 100, height: 100)
                     .background(Color.gray)
                     .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.black, lineWidth: 4))
+                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     .overlay(
                         CircleOverlay()
                     )

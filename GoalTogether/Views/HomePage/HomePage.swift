@@ -7,17 +7,24 @@
 
 import SwiftUI
 
+enum ActiveSheet: Identifiable {
+    case profilePage, actionEditPage
+    
+    var id: Int {
+        hashValue
+    }
+}
+
 struct HomePage: View {
     
-    @ObservedObject var actionListVM = ActionListViewModel()
+    @ObservedObject var actionListVM: ActionListViewModel
     @EnvironmentObject var authState: AuthenticationState
     
+    @State var activeSheet: ActiveSheet?
     @State var presentAddNewItem = false
-    @State var showProfilePage = false
-    /*
-    @State var presentActionDetails = false
-    @State var editingAction: ActionCellViewModel? = nil
- */
+
+    @State var editingAction: Action? = nil
+
  
     private func signoutTapped() {
         actionListVM.actionRepository.endListening()
@@ -37,7 +44,7 @@ struct HomePage: View {
                             Spacer()
                         }
                         ForEach(actionListVM.previousActionCellViewModels) { actionCellVM in
-                            ActionCell(actionCellVM: actionCellVM)
+                            ActionCell(actionCellVM: actionCellVM, editingAction: self.$editingAction)
                         }
                     }
                     if actionListVM.baseDateActionCellViewModels.count > 0 || presentAddNewItem {
@@ -49,13 +56,7 @@ struct HomePage: View {
                             Spacer()
                         }
                         ForEach(actionListVM.baseDateActionCellViewModels) { actionCellVM in
-                            ActionCell(actionCellVM: actionCellVM)
-                        }
-                        if presentAddNewItem {
-                            ActionCell(actionCellVM: ActionCellViewModel(action: (Action(title: "")))) { action in
-                                self.actionListVM.addAction(action)
-                                self.presentAddNewItem.toggle()
-                            }
+                            ActionCell(actionCellVM: actionCellVM, editingAction: self.$editingAction)
                         }
                     }
                     if actionListVM.baseDateWeekActionCellViewModels.count > 0 {
@@ -67,7 +68,7 @@ struct HomePage: View {
                             Spacer()
                         }
                         ForEach(actionListVM.baseDateWeekActionCellViewModels) { actionCellVM in
-                            ActionCell(actionCellVM: actionCellVM)
+                            ActionCell(actionCellVM: actionCellVM, editingAction: self.$editingAction)
                         }
                     }
                     
@@ -80,11 +81,13 @@ struct HomePage: View {
                             Spacer()
                         }
                         ForEach(actionListVM.futureActionCellViewModels) { actionCellVM in
-                            ActionCell(actionCellVM: actionCellVM)
+                            ActionCell(actionCellVM: actionCellVM, editingAction: self.$editingAction)
                         }
                     }
                 }
-                Button(action: {self.presentAddNewItem.toggle()}) {
+                Button(action: {
+                    self.editingAction = Action(title: "")
+                }) {
                     HStack {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
@@ -93,15 +96,30 @@ struct HomePage: View {
                     }
                 }.padding()
             }
-            .sheet(isPresented: $showProfilePage) {
-                ProfilePage()
+            .sheet(item: $activeSheet, onDismiss: didDismiss) { item in
+                switch item {
+                case .profilePage:
+                    ProfilePage()
+                case .actionEditPage:
+                    ActionEditPage(actionEditVM: ActionEditViewModel(actionRepository: actionListVM.actionRepository ,action: editingAction!))
+                }
             }
-            .navigationBarItems(trailing: Button(action: { self.showProfilePage.toggle() } ) {
+            .navigationBarItems(leading: Button(action: { self.activeSheet = .profilePage } ) {
                 Image(systemName: "person.circle")
                     .font(.system(size: 24))
             }
             )
-            .navigationBarTitle("Test Title")
+            .navigationBarTitle("Current Actions", displayMode: .inline)
         }
+        .onChange(of: editingAction) { editingAction in
+            if editingAction != nil {
+                self.activeSheet = .actionEditPage
+            }
+        }
+    }
+    
+    func didDismiss() {
+        self.activeSheet = nil
+        self.editingAction = nil
     }
 }

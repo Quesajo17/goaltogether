@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var authState: AuthenticationState
+    @EnvironmentObject var userProfile: CurrentUserProfile
     
     private func signoutTapped() {
         authState.signout()
@@ -17,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if authState.loggedInUser != nil {
+            if authState.loggedInUser != nil && userProfile.currentUser != nil {
                 HomeView()
             } else {
                 AuthenticationView(authType: .login)

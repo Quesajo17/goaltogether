@@ -71,7 +71,7 @@ class ActionListViewModelTests: XCTestCase {
         let pastCount = sut.previousActionCellViewModels.count
         
         // Get the current date set to yesterdayAlmostMidnight
-        let date = Date().yesterdayAlmostMidnight()
+        let date = Date().yesterday(.end)
         let actionDate = sut.actionRepository.actions[2].startDate
         
         // when
@@ -102,7 +102,7 @@ class ActionListViewModelTests: XCTestCase {
         // when
 
         // assert
-        if sut.baseDate.todayAlmostMidnight() == sut.baseDate.endOfWeekDate() {
+        if sut.baseDate == sut.baseDate.endOfWeekDate(timeOfDay: .start) {
             XCTAssertEqual(currentCount, 1)
         } else {
             XCTAssertEqual(currentCount, 0)
@@ -119,7 +119,7 @@ class ActionListViewModelTests: XCTestCase {
         // when
         
         // assert
-        if sut.baseDate.todayAlmostMidnight() == sut.baseDate.endOfWeekDate() {
+        if sut.baseDate == sut.baseDate.endOfWeekDate(timeOfDay: .start) {
             XCTAssertEqual(currentCount, 1)
         } else {
             XCTAssertEqual(currentCount, 2)

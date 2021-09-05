@@ -23,3 +23,11 @@ protocol ActionStoreType {
     func deleteAction(_ action: Action)
     func endListening()
 }
+
+protocol AimActionStoreType: ActionStoreType {
+    
+    var aim: Aim { get }
+    
+    init(aim: Aim)
+    
+}

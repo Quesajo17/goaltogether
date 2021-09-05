@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ActionCellViewModel: ObservableObject, Identifiable {
-    @Published var actionRepository = ActionRepository()
+    @Published var actionRepository: ActionStoreType
     @Published var action: Action
     @Published var modified = false
     
@@ -17,7 +17,8 @@ class ActionCellViewModel: ObservableObject, Identifiable {
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(action: Action) {
+    init(actionRepository: ActionStoreType, action: Action) {
+        self.actionRepository = actionRepository
         self.action = action
         
         $action
@@ -35,6 +36,16 @@ class ActionCellViewModel: ObservableObject, Identifiable {
                 self?.actionRepository.updateAction(action)
             }
             .store(in: &cancellables)
+    }
+    
+    func completeAction() {
+        if self.action.completed == false {
+            self.action.completed = true
+            self.action.completionDate = Date()
+        } else {
+            self.action.completed = false
+            self.action.completionDate = nil
+        }
     }
     
     func addAction(action: Action) {
