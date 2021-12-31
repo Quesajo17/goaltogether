@@ -14,7 +14,7 @@ protocol GroupUserStoreType {
     var membersWithStatusPublished: Published<[(UserProfile, GroupMembershipStatus)]> { get }
     var membersWithStatusPublisher: Published<[(UserProfile, GroupMembershipStatus)]>.Publisher { get }
     
-    var groupId: String? { get set }
+    var group: AccountabilityGroup? { get set }
     
     
     func loadGroupMembers() -> AnyPublisher<Bool, Never>
@@ -24,6 +24,7 @@ protocol GroupUserStoreType {
     func updateMembershipStatus(user: UserProfile, group: AccountabilityGroup, newStatus: GroupMembershipStatus) throws -> (UserProfile, [GroupMembership])
     func removeMembershipFromUser(user: UserProfile, group: AccountabilityGroup) throws -> (UserProfile, [GroupMembership])
     func updateMembershipGroupName(user: UserProfile, group: AccountabilityGroup, newName: String) throws -> (UserProfile, [GroupMembership])
+    // func replaceMemberWithStatus(userWithStatus: (UserProfile, GroupMembershipStatus)) throws
 
     
     func endListening()
@@ -145,4 +146,24 @@ extension GroupUserStoreType {
         
         return (user, newMembershipSet!)
     }
+    
+    /*
+    func replaceMemberWithStatus(userWithStatus: (UserProfile, GroupMembershipStatus), remove: Bool = false) throws {
+        let userId = userWithStatus.0.id
+        
+        guard userId != nil else {
+            throw ErrorUpdatingUserMembership.userHasNoId
+        }
+        
+        let index = self.membersWithStatus.firstIndex(where: { $0.0.id == userId })
+        
+        guard index != nil else {
+            throw ErrorUpdatingGroupMembership.groupHasNoMember
+        }
+        
+        if remove == false {
+            membersWithStatus.remove(at: index!)
+        }
+    }
+ */
 }

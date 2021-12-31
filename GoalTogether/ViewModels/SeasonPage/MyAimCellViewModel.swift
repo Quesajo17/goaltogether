@@ -22,10 +22,10 @@ class MyAimCellViewModel: ObservableObject, Identifiable {
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(aimRepository: AimStoreType, aim: Aim) {
+    init(aimRepository: AimStoreType, aim: Aim, userProfile: UserProfile) {
         self.aimRepository = aimRepository
         self.aim = aim
-        self.aimActionRepository = AimActionRepository(aim: aim)
+        self.aimActionRepository = AimActionRepository(aim: aim, userProfile: userProfile)
         subscribeToAimActions()
     }
     
@@ -64,5 +64,15 @@ class MyAimCellViewModel: ObservableObject, Identifiable {
     
     func printActionCount() {
         print(self.actions?.count ?? "action count is nil")
+    }
+    
+    func completeAim() {
+        if self.aim.completed == false {
+            self.aim.completed = true
+            self.aim.completionDate = Date()
+            self.aimRepository.updateAim(self.aim)
+        } else {
+            return
+        }
     }
 }

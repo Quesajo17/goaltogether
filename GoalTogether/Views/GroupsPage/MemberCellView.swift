@@ -16,11 +16,30 @@ struct MemberCellView: View {
     }
     
     var body: some View {
-        VStack {
+        HStack {
             AnyUserProfileImage()
                 .environmentObject(userCellVM)
-            Text(userCellVM.user.firstName!)
-        }
+            VStack {
+                HStack {
+                    Text(userCellVM.name ?? "No Name")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.lightText)
+                    Spacer()
+                }
+                if userCellVM.user.email != nil {
+                    Text(userCellVM.user.email!)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .foregroundColor(.lightText)
+                }
+            }
+            Spacer()
+        }.background(RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(Color.gray)
+                        .opacity(0.7))
+        .padding()
+        .fixedSize(horizontal: false, vertical: true)
+
     }
 }
 

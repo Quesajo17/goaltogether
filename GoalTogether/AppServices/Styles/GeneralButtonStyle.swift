@@ -17,3 +17,18 @@ struct GeneralButtonStyle: ButtonStyle {
             .cornerRadius(8)
     }
 }
+
+struct RoundedRectangleBlackButtonStyle: ButtonStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            // Spacer()
+            configuration.label.foregroundColor(.lightText)
+            // Spacer()
+        }
+        .padding()
+        .background(Color.darkFill.cornerRadius(8))
+        .scaleEffect(configuration.isPressed ? 0.9 : 1)
+    }
+    
+}

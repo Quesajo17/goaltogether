@@ -94,7 +94,8 @@ struct HomePage: View {
                             .frame(width: 20, height: 20)
                         Text("Add Action")
                     }
-                }.padding()
+                }.buttonStyle(RoundedRectangleBlackButtonStyle())
+                .padding()
             }
             .sheet(item: $activeSheet, onDismiss: didDismiss) { item in
                 switch item {
@@ -107,8 +108,7 @@ struct HomePage: View {
             .navigationBarItems(leading: Button(action: { self.activeSheet = .profilePage } ) {
                 Image(systemName: "person.circle")
                     .font(.system(size: 24))
-            }
-            )
+            })
             .navigationBarTitle("Current Actions", displayMode: .inline)
         }
         .onChange(of: editingAction) { editingAction in

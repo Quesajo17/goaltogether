@@ -18,7 +18,7 @@ struct Action: Codable, Identifiable, Equatable {
     
     var completed: Bool
     var completionDate: Date?
-    @ServerTimestamp var createdTime: Timestamp?
+    // @ServerTimestamp var createdTime: Timestamp?
     var startDate: Date
     var dueDate: Date?
     var description: String?
@@ -35,6 +35,15 @@ struct Action: Codable, Identifiable, Equatable {
     
     init(title: String) {
         self.title = title
+        self.completed = false
+        self.startDate = Date()
+    }
+    
+    init(title: String, aimId: String?) {
+        self.title = title
+        if aimId != nil {
+            self.aimId = aimId
+        }
         self.completed = false
         self.startDate = Date()
     }
@@ -63,7 +72,7 @@ extension Action {
         
         case completed
         case completionDate
-        case createdTime
+        // case createdTime
         case startDate
         case dueDate
         case description
@@ -78,7 +87,7 @@ extension Action {
         aimId = try values.decodeIfPresent(String.self, forKey: .aimId)
         completed = try values.decode(Bool.self, forKey: .completed)
         completionDate = try values.decodeIfPresent(Date.self, forKey: .completionDate)
-        _createdTime = try values.decode(ServerTimestamp<Timestamp>.self, forKey: .createdTime)
+        // _createdTime = try values.decode(ServerTimestamp<Timestamp>.self, forKey: .createdTime)
         startDate = try values.decode(Date.self, forKey: .startDate)
         dueDate = try values.decodeIfPresent(Date.self, forKey: .dueDate)
         description = try values.decodeIfPresent(String.self, forKey: .description)
@@ -86,13 +95,12 @@ extension Action {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(aimId, forKey: .aimId)
         try container.encode(completed, forKey: .completed)
         try container.encodeIfPresent(completionDate, forKey: .completionDate)
-        try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        // try container.encodeIfPresent(createdTime, forKey: .createdTime)
         try container.encode(startDate, forKey: .startDate)
         try container.encodeIfPresent(dueDate, forKey: .dueDate)
         try container.encodeIfPresent(description, forKey: .description)

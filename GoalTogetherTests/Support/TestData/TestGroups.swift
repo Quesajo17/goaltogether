@@ -18,19 +18,16 @@ class TestGroups {
                 title: "Mastermind Group",
                 description: "This is a mastermind group used for testing",
                 creationDate: Date(),
-                members: [
-                    UserMembership(userId: "charliepage", membershipStatus: .active),
-                    UserMembership(userId: "giannis", membershipStatus: .pending)
-                ]
+                activeMembers: ["charliepage"],
+                pendingMembers: ["giannis"]
             ),
             AccountabilityGroup(
                 id: "acctgroup2",
                 title: "Specialty Group",
                 description: "This is a specialty group someone has been invited to.",
                 creationDate: Date(),
-                members: [
-                    UserMembership(userId: "charliepage", membershipStatus: .pending)
-                ]
+                activeMembers: nil,
+                pendingMembers: ["charliepage"]
             )
         ]
     }

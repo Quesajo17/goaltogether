@@ -12,18 +12,28 @@ struct GroupCellView: View {
     
     var body: some View {
         VStack {
-            Text(groupCellVM.group.title!)
-                .fontWeight(.bold)
-                .padding(.leading, 5)
-                .padding(.bottom, 1)
-            if groupCellVM.group.description != nil {
-                Text(groupCellVM.group.description!)
+            HStack {
+                Text(groupCellVM.group.title != nil ? groupCellVM.group.title! : "Group has No Name")
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)
                     .padding(.leading, 5)
-                    .padding(.trailing, 5)
-                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, 1)
+                Spacer()
             }
-        }.background(RoundedRectangle(cornerRadius: 8)
-                        .foregroundColor(Color.gray))
+            if groupCellVM.group.description != nil {
+                HStack {
+                    Text(groupCellVM.group.description!)
+                        .foregroundColor(Color.black)
+                        .padding(.leading, 5)
+                        .padding(.trailing, 5)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer()
+                }
+            }
+        }.padding()
+        .background(Color.gray.cornerRadius(8)).opacity(0.7)
+        // .background(RoundedRectangle(cornerRadius: 8)
+                        // .foregroundColor(Color.gray))
     }
 }
 

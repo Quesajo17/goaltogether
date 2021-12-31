@@ -9,16 +9,9 @@ import SwiftUI
 
 
 struct ActionEditPage: View {
-    @State var actionEditVM: ActionEditViewModel
+    @StateObject var actionEditVM: ActionEditViewModel
     
     @Environment(\.presentationMode) var presentationMode
-    
-    
-    init(actionEditVM: ActionEditViewModel) {
-        _actionEditVM = State(initialValue: actionEditVM)
-    }
-    
-
     
     var body: some View {
         NavigationView {

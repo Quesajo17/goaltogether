@@ -13,29 +13,65 @@ import Firebase
 class MyGroupsRepository: ObservableObject, GroupStoreType {
     
     let db = Firestore.firestore()
-    var listener: ListenerRegistration?
+    var activeListener: ListenerRegistration?
+    var pendingListener: ListenerRegistration?
     
-    @Published var accountabilityGroups = [AccountabilityGroup]()
-    var accountabilityGroupsPublished: Published<[AccountabilityGroup]> { _accountabilityGroups }
-    var accountabilityGroupsPublisher: Published<[AccountabilityGroup]>.Publisher { $accountabilityGroups }
+    @Published var activeGroups: [AccountabilityGroup] = [AccountabilityGroup]()
+    var activeGroupsPublished: Published<[AccountabilityGroup]> { _activeGroups }
+    var activeGroupsPublisher: Published<[AccountabilityGroup]>.Publisher { $activeGroups }
+
+    @Published var pendingGroups: [AccountabilityGroup] = [AccountabilityGroup]()
+    var pendingGroupsPublished: Published<[AccountabilityGroup]> { _pendingGroups }
+    var pendingGroupsPublisher: Published<[AccountabilityGroup]>.Publisher { $pendingGroups }
+    
+
     
     init() {
-        self.myGroupsListener()
+        self.activeGroupsListener()
+        self.pendingGroupsListener()
     }
     
     
-    func myGroupsListener() {
+    func activeGroupsListener() {
         guard CurrentUserProfile.shared.currentUser?.id != nil else {
             fatalError("Loading User Groups while Current User id equals nil")
         }
         
         let userId = CurrentUserProfile.shared.currentUser?.id
         
-        self.listener = db.collection("accountabilityGroup")
-            .whereField("members", arrayContains: userId!)
+        self.activeListener = db.collection("accountabilityGroup")
+            .whereField("activeMembers", arrayContains: userId!)
             .addSnapshotListener { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
-                    self.accountabilityGroups = querySnapshot.documents.compactMap {
+                    self.activeGroups = querySnapshot.documents.compactMap {
+                        document in
+                        do {
+                            let x = try document.data(as: AccountabilityGroup.self)
+                            return x
+                        }
+                        catch {
+                            print("An error loading the group has occurred")
+                            print(error)
+                        }
+                        return nil
+                    }
+                }
+            }
+    }
+
+    
+    func pendingGroupsListener() {
+        guard CurrentUserProfile.shared.currentUser?.id != nil else {
+            fatalError("Loading User Groups while Current User id equals nil")
+        }
+        
+        let userId = CurrentUserProfile.shared.currentUser?.id
+        
+        self.pendingListener = db.collection("accountabilityGroup")
+            .whereField("pendingMembers", arrayContains: userId!)
+            .addSnapshotListener { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    self.pendingGroups = querySnapshot.documents.compactMap {
                         document in
                         do {
                             let x = try document.data(as: AccountabilityGroup.self)
@@ -71,7 +107,14 @@ class MyGroupsRepository: ObservableObject, GroupStoreType {
     }
     
     func updateGroup(_ accountabilityGroup: AccountabilityGroup) {
-        // stub
+        if let groupID = accountabilityGroup.id {
+            do {
+                try db.collection("accountabilityGroup").document(groupID)
+                    .setData(from: accountabilityGroup)
+            } catch {
+                fatalError("Unable to encode action: \(error.localizedDescription)")
+            }
+        }
     }
     
     func deleteGroup(_ accountabilityGroup: AccountabilityGroup) {

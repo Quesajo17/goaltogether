@@ -27,12 +27,41 @@ struct SeasonPage: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                    if seasonAimsVM.aimCellViewModels.count > 0 {
-                        ForEach(seasonAimsVM.aimCellViewModels) { aimCellVM in
+                    if seasonAimsVM.inProgressAimCellViewModels.count > 0 {
+                        HStack {
+                            Text("In Progress")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .padding(.leading)
+                            Spacer()
+                        }
+                        ForEach(seasonAimsVM.inProgressAimCellViewModels) { aimCellVM in
                             AimCell(aimCellVM: aimCellVM, editingAim: self.$editingAim, editingAction: self.$editingAction)
                                 .padding()
                         }
                     }
+                if seasonAimsVM.completedAimCellViewModels.count > 0 {
+                    HStack {
+                        Text("Completed")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    ForEach(seasonAimsVM.completedAimCellViewModels) { aimCellVM in
+                        AimCell(aimCellVM: aimCellVM, editingAim: self.$editingAim, editingAction: self.$editingAction)
+                            .padding()
+                    }
+                }
+                Button(action: { self.editingAim = Aim(title: "", user: seasonAimsVM.currentUser.currentUser!, season: seasonAimsVM.featuredSeason!) }) {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("Add Aim")
+                    }
+                }.buttonStyle(RoundedRectangleBlackButtonStyle())
+                .padding()
                 }
             .sheet(item: $activeSheet, onDismiss: didDismiss) { item in
                 switch item {
@@ -48,18 +77,15 @@ struct SeasonPage: View {
             .navigationBarItems(leading: Button(action: { self.activeSheet = .profilePage } ) {
                 Image(systemName: "person.circle")
                     .font(.system(size: 24))
-            },
-            trailing: Button(action: { self.editingAim = Aim(title: "", user: seasonAimsVM.currentUser.currentUser!, season: seasonAimsVM.featuredSeason!) }) {
-                Image(systemName: "plus.circle.fill")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-            }
-            )
+            })
             .navigationBarTitle("\(seasonAimsVM.featuredSeason!.title!) Aims", displayMode: .inline)
         }
         .onChange(of: editingAim) { editingAim in
             if editingAim != nil {
                 self.activeSheet = .aimEditPage
+            }
+            if editingAim == nil {
+                print("Changed editingAim but it's nil")
             }
         }
         .onChange(of: editingAction) { editingAction in

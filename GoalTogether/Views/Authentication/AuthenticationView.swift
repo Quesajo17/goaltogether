@@ -23,6 +23,7 @@ struct AuthenticationView: View {
                 SignInWithAppleButton {
                     self.authState.login(with: .signInWithApple)
                 }
+                .buttonStyle(RoundedRectangleBlackButtonStyle())
                     .frame(width: 130, height: 44)
             }
         }

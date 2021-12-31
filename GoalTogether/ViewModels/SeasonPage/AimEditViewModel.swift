@@ -39,4 +39,12 @@ class AimEditViewModel: ObservableObject, Identifiable {
     func updateAim(aim: Aim) {
         aimRepository.updateAim(aim)
     }
+    
+    func completeAim() {
+        if self.aim.completed == false {
+            completionState = true
+        } else {
+            return
+        }
+    }
 }

@@ -162,7 +162,7 @@ extension Date {
     
     /// The endOfWeekDate function takes a weekday that functions as the start of week. It returns the date of the end of the current week.
     ///
-    /// - parameter weekStart: String parameter that accepts a weekday (IN PROGRESS).
+    /// - parameter weekStart: String parameter that accepts a weekday
     /// - parameter timeOfDay: Parameter for determining whether this returns the start or the end of the day (default is end). Write as .start or .end
     /// - returns: Date of the last day of the week.
     func endOfWeekDate(weekStart weekday: Weekday = .sun, timeOfDay: TimeOfDay = .end) -> Date {
@@ -170,6 +170,18 @@ extension Date {
         let weekEndDate = self.next(weekEndDay, considerToday: true)
         
         let newDate = weekEndDate.dateStartOrEnd(timeOfDay)
+        return newDate
+    }
+    
+    /// The startOfWeekDate function takes a weekday that functions as the start of week. It returns the date of the start of the current week.
+    ///
+    /// - parameter weekStart: String parameter that accepts a weekday
+    /// - parameter timeOfDay: Parameter for determining whether this returns the start or the end of the day (default is end). Write as .start or .end
+    /// - returns: Date of the first day of the week.
+    func startOfWeekDate(weekStart weekday: Weekday = .sun, timeOfDay: TimeOfDay = .start) -> Date {
+        let weekStartDate = self.previous(weekday, considerToday: true)
+        
+        let newDate = weekStartDate.dateStartOrEnd(timeOfDay)
         return newDate
     }
     

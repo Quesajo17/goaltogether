@@ -14,6 +14,8 @@ struct NewGroupView: View {
     @State var showUserInviteView: Bool = false
     @State private var showError: Bool = false
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         NavigationView {
             Form {
@@ -34,7 +36,7 @@ struct NewGroupView: View {
                     ScrollView(.horizontal, showsIndicators: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, content: {
                         HStack {
                             ForEach(newGroupVM.pendingInviteeViewModels) { userCellVM in
-                                MemberCellView(userCellVM: userCellVM)
+                                MemberCellCircleView(userCellVM: userCellVM)
                             }
                         }
                     })
@@ -59,24 +61,33 @@ struct NewGroupView: View {
                       dismissButton: .default(Text("OK")))
             }
             .navigationBarTitle("Start a New Group")
-            .navigationBarItems(leading: Button(action: { print("Cancel Changes") }) {
+            .navigationBarItems(leading: Button(action: { cancelChanges() }) {
                 Text("Cancel")
             },
-            trailing: Button(action: {
-                do {
-                    try newGroupVM.saveGroup()
-                } catch {
-                    print("Could not save the group")
-                }
-                }) { Text("Save Changes")
-                
-            })
+            trailing: Button(action: { saveChanges() }) { Text("Save Changes") }
+                                    .disabled(self.newGroupVM.group.title == nil))
         }
+    }
+    private func cancelChanges() {
+        dismiss()
+    }
+    
+    private func saveChanges() {
+        do {
+            try newGroupVM.saveGroup()
+        } catch {
+            print("Could not save the group")
+        }
+        dismiss()
+    }
+    
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
 struct NewGroupView_Previews: PreviewProvider {
     static var previews: some View {
         NewGroupView(newGroupVM: NewGroupViewModel(groupRepository: MyGroupsRepository(), groupUserRepository: GroupMemberUserRepository()))
-    }
+    } 
 }

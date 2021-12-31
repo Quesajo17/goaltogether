@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct AimEditPage: View {
-    @State var aimEditVM: AimEditViewModel
+    @StateObject var aimEditVM: AimEditViewModel
     
     @Environment(\.presentationMode) var presentationMode
-    
-    init(aimEditVM: AimEditViewModel) {
-        _aimEditVM = State(initialValue: aimEditVM)
-    }
     
     var body: some View {
         NavigationView {
@@ -34,8 +30,8 @@ struct AimEditPage: View {
                 }
                 
                 Section(header: Text("Dates")) {
-                    DatePicker("StartDate", selection: $aimEditVM.aim.startDate, displayedComponents: .date)
-                    DatePicker("PlannedEndDate", selection: $aimEditVM.aim.plannedEndDate, displayedComponents: .date)
+                    DatePicker("Start Date", selection: $aimEditVM.aim.startDate, displayedComponents: .date)
+                    DatePicker("Expected Completion", selection: $aimEditVM.aim.plannedEndDate, displayedComponents: .date)
                 }
             }
             .navigationBarTitle("Edit Aim")
@@ -57,7 +53,7 @@ struct AimEditPage: View {
             self.aimEditVM.aim.description = nil
         }
         
-        // updates the existign action if there is an ID, and creates a new one if there is none.
+        // updates the existing action if there is an ID, and creates a new one if there is none.
         if aimEditVM.aim.id != nil {
             self.aimEditVM.updateAim(aim: self.aimEditVM.aim)
         } else if aimEditVM.aim.id == nil {

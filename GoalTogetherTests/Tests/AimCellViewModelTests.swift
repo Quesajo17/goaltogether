@@ -17,7 +17,7 @@ class AimCellViewModelTests: XCTestCase {
         sut = MyAimCellViewModel(
             aimRepository: MockAimsRepository(),
             aim: TestAims(season: Season(userProfile: MockCurrentUserProfile().currentUser!, referenceDate: Date(), lastOrder: 3, id: "newSeasonID")).aimsCollection[0],
-            aimActionRepository: MockAimActionRepository(aim: TestAims(season: Season(userProfile: MockCurrentUserProfile().currentUser!, referenceDate: Date(), lastOrder: 3, id: "newSeasonID")).aimsCollection[0])
+            aimActionRepository: MockAimActionRepository(aim: TestAims(season: Season(userProfile: MockCurrentUserProfile().currentUser!, referenceDate: Date(), lastOrder: 3, id: "newSeasonID")).aimsCollection[0], userProfile: MockCurrentUserProfile().currentUser!)
         )
     }
 

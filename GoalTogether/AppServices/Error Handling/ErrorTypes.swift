@@ -149,10 +149,13 @@ extension ErrorUpdatingUserMembership: LocalizedError {
 
 public enum ErrorUpdatingGroupMembership: Error {
     case userAlreadyInvited
+    case userAlreadyActive
+    case noPendingInviteToActivate
     case groupHasNoMember
     case userHasNoId
     case groupHasNoId
     case updatesMatchCurrentMember
+    case groupCouldNotBeFound
 }
 
 
@@ -161,6 +164,10 @@ extension ErrorUpdatingGroupMembership: LocalizedError {
         switch self {
         case .userAlreadyInvited:
             return NSLocalizedString("The user has already been invited to this group", comment: "")
+        case .userAlreadyActive:
+            return NSLocalizedString("The user is already an active member of this group", comment: "")
+        case .noPendingInviteToActivate:
+            return NSLocalizedString("You are trying to activate a user who has not been invited to the group yet.", comment: "")
         case .userHasNoId:
             return NSLocalizedString("The user cannot be invited as they have no id.", comment: "")
         case .groupHasNoId:
@@ -169,6 +176,24 @@ extension ErrorUpdatingGroupMembership: LocalizedError {
             return NSLocalizedString("Can't update the group membership as it can't be found.", comment: "")
         case .updatesMatchCurrentMember:
             return NSLocalizedString("Tried to update the member in the group, but requested updates match the current status.", comment: "")
+        case .groupCouldNotBeFound:
+            return NSLocalizedString("Could not find the group.", comment: "")
+        }
+    }
+}
+
+public enum ErrorLoadingFriendInfo: Error {
+    case userHasNoId
+    case noDefaultSeason
+}
+
+extension ErrorLoadingFriendInfo: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .userHasNoId:
+            return NSLocalizedString("The user is missing an id", comment: "")
+        case .noDefaultSeason:
+            return NSLocalizedString("There is no default Season for the user; aims cannot be loaded", comment: "")
         }
     }
 }

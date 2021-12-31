@@ -30,11 +30,6 @@ struct HomeView: View {
                     Label("Groups", systemImage: "person.2.fill")
                 }
                 .tag(2)
-            FriendsPage()
-                .tabItem {
-                    Label("Friends", systemImage: "person.crop.circle.badge.plus")
-                }
-                .tag(3)
         }
     }
 }

@@ -16,12 +16,10 @@ class SeasonAimsViewModel: ObservableObject {
     @Published var seasonLength: SeasonLength? {
         didSet {
             guard seasonLength != nil else {
-                print("Season Length is nil - ending the SeasonLength didSet")
                 return
             }
             
             guard seasonLength != oldValue else {
-                print("Season Length was set to the same value.")
                 return
             }
             
@@ -43,13 +41,15 @@ class SeasonAimsViewModel: ObservableObject {
     @Published var featuredSeason: Season? {
         didSet {
             guard featuredSeason != nil else {
-                print("Trying to set GoalRepository based on featured Season. Featured Season is nil.")
                 return
             }
 
             self.aimRepository.season = featuredSeason
         }
     }
+    
+    @Published var inProgressAimCellViewModels = [MyAimCellViewModel]()
+    @Published var completedAimCellViewModels = [MyAimCellViewModel]()
     
     @Published var aimCellViewModels = [MyAimCellViewModel]()
     
@@ -65,7 +65,9 @@ class SeasonAimsViewModel: ObservableObject {
         self.seasonLength = currentUser.currentUser?.seasonLength
         
         subscribeToCurrentSeason()
-        loadAims()
+        // loadAims()
+        loadInProgressAims()
+        loadCompletedAims()
         
     }
     
@@ -80,16 +82,11 @@ extension SeasonAimsViewModel {
         let seasonId = season.id
         let userProfileDefaultSeason = currentUser.currentUser?.defaultSeason
         
-        print("season ID is equal to \(String(describing: seasonId))")
-        print("userProfileDefaultSeasonId is equal to \(String(describing: userProfileDefaultSeason))")
-        print("SeasonLength is \(String(describing: seasonLength))")
-        
         
         // Sets the default season in the view model to default.
         self.defaultSeason = season
         self.featuredSeason = season
         guard seasonId != userProfileDefaultSeason else {
-            print("Season ID of \(String(describing: seasonId)) is already equal to user profile default season: \(String(describing: userProfileDefaultSeason))")
             return
         }
         guard self.currentUser.currentUser != nil else {
@@ -107,7 +104,6 @@ extension SeasonAimsViewModel {
         self.seasonRepository.currentSeasonPublisher
             .dropFirst()
             .sink { [weak self] season in
-                print("SeasonLength is \(String(describing: self?.seasonLength))")
                 if season != nil {
                     self?.handleNewDefaultSeason(season!)
                 }
@@ -122,10 +118,36 @@ extension SeasonAimsViewModel {
     func loadAims() {
         self.aimRepository.aimsPublisher.map { aims in
             aims.map { aim in
-                MyAimCellViewModel(aimRepository: self.aimRepository, aim: aim)
+                MyAimCellViewModel(aimRepository: self.aimRepository, aim: aim, userProfile: self.currentUser.currentUser!)
             }
         }
         .assign(to: \.aimCellViewModels, on: self)
+        .store(in: &cancellables)
+    }
+    
+    func loadInProgressAims() {
+        self.aimRepository.aimsPublisher.map { aims in
+            aims.filter { aim in
+                aim.completed == false
+            }
+            .map { aim in
+                MyAimCellViewModel(aimRepository: self.aimRepository, aim: aim, userProfile: self.currentUser.currentUser!)
+            }
+        }
+        .assign(to: \.inProgressAimCellViewModels, on: self)
+        .store(in: &cancellables)
+    }
+    
+    func loadCompletedAims() {
+        self.aimRepository.aimsPublisher.map { aims in
+            aims.filter { aim in
+                aim.completed
+            }
+            .map { aim in
+                MyAimCellViewModel(aimRepository: self.aimRepository, aim: aim, userProfile: self.currentUser.currentUser!)
+            }
+        }
+        .assign(to: \.completedAimCellViewModels, on: self)
         .store(in: &cancellables)
     }
     

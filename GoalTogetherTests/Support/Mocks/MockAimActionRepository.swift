@@ -14,13 +14,15 @@ class MockAimActionRepository: ObservableObject, AimActionStoreType {
     
     var db = TestActions()
     var aim: Aim
+    var user: UserProfile
     
     @Published var actions: [Action] = [Action]()
     var actionsPublished: Published<[Action]> { _actions }
     var actionsPublisher: Published<[Action]>.Publisher { $actions }
     
-    required init(aim: Aim) {
+    required init(aim: Aim, userProfile: UserProfile) {
         self.aim = aim
+        self.user = userProfile
     }
     
     func loadData() {

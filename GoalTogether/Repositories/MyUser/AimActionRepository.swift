@@ -17,17 +17,19 @@ class AimActionRepository: ObservableObject, AimActionStoreType {
     var listener: ListenerRegistration?
     
     var aim: Aim
+    var user: UserProfile
     
     @Published var actions: [Action] = [Action]()
     var actionsPublished: Published<[Action]> { _actions }
     var actionsPublisher: Published<[Action]>.Publisher { $actions }
     
-    required init(aim: Aim) {
+    required init(aim: Aim, userProfile: UserProfile) {
         self.aim = aim
+        self.user = userProfile
     }
     
     func loadData() {
-        let userId = CurrentUserProfile.shared.currentUser!.id
+        let userId = user.id
         let aimId = self.aim.id
         
         guard aimId != nil else {

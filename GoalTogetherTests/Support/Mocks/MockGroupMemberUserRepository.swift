@@ -17,9 +17,9 @@ class MockGroupMemberUserRepository: ObservableObject, GroupUserStoreType {
     var membersWithStatusPublished: Published<[(UserProfile, GroupMembershipStatus)]> { _membersWithStatus }
     var membersWithStatusPublisher: Published<[(UserProfile, GroupMembershipStatus)]>.Publisher { $membersWithStatus }
     
-    var groupId: String? {
+    var group: AccountabilityGroup? {
         didSet {
-            if groupId != nil && groupId != oldValue {
+            if group != nil && group != oldValue {
                 let _ = self.loadGroupMembers()
             }
         }
@@ -41,22 +41,28 @@ class MockGroupMemberUserRepository: ObservableObject, GroupUserStoreType {
     
     func loadGroupMembers() -> AnyPublisher<Bool, Never> {
         Future { promise in
-            guard self.groupId != nil else {
+            guard self.group != nil else {
                 return
             }
+            
+            guard self.group!.id != nil else {
+                return
+            }
+            
+            let groupId = self.group!.id!
             
             self.db.$allProfiles
                 .print()
                 .map { userProfiles in
                 userProfiles.filter { userProfile in
-                    if userProfile.groupMembership?.contains(where: { $0.groupId == self.groupId }) == true {
+                    if userProfile.groupMembership?.contains(where: { $0.groupId == groupId }) == true {
                         return true
                     } else {
                         return false
                     }
                 }
                 .map { userProfile in
-                    let groupMembership = userProfile.groupMembership!.first(where: { $0.groupId == self.groupId })
+                    let groupMembership = userProfile.groupMembership!.first(where: { $0.groupId == groupId })
                     
                     return (userProfile, groupMembership!.membershipStatus)
                     }

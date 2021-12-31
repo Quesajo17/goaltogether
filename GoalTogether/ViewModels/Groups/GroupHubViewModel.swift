@@ -14,7 +14,7 @@ class GroupHubViewModel: ObservableObject {
     @Published var currentUser: CurrentUserType
     
     @Published var activeGroupViewModels: [GroupCellViewModel] = [GroupCellViewModel]()
-    @Published var pendingInviteViewModels: [GroupCellViewModel] = [GroupCellViewModel]()
+    @Published var pendingInviteViewModels: [SingleGroupViewModel] = [SingleGroupViewModel]()
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -28,15 +28,8 @@ class GroupHubViewModel: ObservableObject {
     }
     
     func loadActiveGroups() {
-        self.groupRepository.accountabilityGroupsPublisher.map { groups in
-            groups.filter { group in
-                if group.members?.contains(where: { $0.userId == self.currentUser.currentUser!.id && $0.membershipStatus == .active }) == true {
-                    return true
-                } else {
-                    return false
-                }
-            }
-            .map { group in
+        self.groupRepository.activeGroupsPublisher.map { groups in
+            groups.map { group in
                 GroupCellViewModel(groupRepository: self.groupRepository, accountabilityGroup: group)
             }
         }
@@ -45,61 +38,13 @@ class GroupHubViewModel: ObservableObject {
     }
     
     func loadPendingGroups() {
-        self.groupRepository.accountabilityGroupsPublisher.map { groups in
-            groups.filter { group in
-                if group.members?.contains(where: { $0.userId == self.currentUser.currentUser!.id && $0.membershipStatus == .pending }) == true {
-                    return true
-                } else {
-                    return false
-                }
-            }
-            .map { group in
-                GroupCellViewModel(groupRepository: self.groupRepository, accountabilityGroup: group)
+        self.groupRepository.pendingGroupsPublisher.map { groups in
+            groups.map { group in
+                SingleGroupViewModel(groupRepository: self.groupRepository, groupUserRepository: GroupMemberUserRepository(), group: group)
             }
         }
         .assign(to: \.pendingInviteViewModels, on: self)
         .store(in: &cancellables)
-    }
-    
-    func acceptInvitationTo(_ accountabilityGroup: AccountabilityGroup) throws {
-        let userProfile = currentUser.currentUser
-        guard userProfile?.id != nil else {
-            throw ErrorUpdatingUserMembership.userHasNoId
-        }
-        
-        do {
-            try updateGroupToActive(currentUser: userProfile!, accountabilityGroup: accountabilityGroup)
-        } catch {
-            throw error
-        }
-
-        do {
-            try updateUserToActive(accountabilityGroup: accountabilityGroup)
-        } catch {
-            throw error
-        }
-    }
-    
-    private func updateGroupToActive(currentUser: UserProfile, accountabilityGroup: AccountabilityGroup) throws {
-        var group = accountabilityGroup
-        
-        let index = group.members?.firstIndex(where: { $0.userId == currentUser.id })
-        
-        guard index != nil else {
-            throw ErrorUpdatingGroupMembership.groupHasNoMember
-        }
-        
-        let membershipStatus = group.members![index!].membershipStatus
-        
-        if membershipStatus == .pending {
-            group.members![index!].membershipStatus = .active
-        } else if membershipStatus == .active {
-            throw ErrorUpdatingGroupMembership.updatesMatchCurrentMember
-        } else {
-            throw ErrorUpdatingGroupMembership.groupHasNoMember
-        }
-        
-        self.groupRepository.updateGroup(group)
     }
     
     private func updateUserToActive(accountabilityGroup: AccountabilityGroup) throws {

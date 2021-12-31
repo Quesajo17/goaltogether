@@ -43,21 +43,30 @@ struct GroupMembership: Codable, Equatable {
 }
 
 extension UserProfile {
-    /// isMemberOfGroup function accepts an accountability group, and returns a boolean value if the user has a membership to a group with that Id. It does not pay attention to the status of that membership, it just verifies. It will throw an error if the user or the group is missing an ID.
+    /// isMemberOfGroup function accepts an accountability group, and an optional status and returns a boolean value if the user has a membership to a group with that Id (and with that status if one is passed to the function). It will return false if the group is missing an ID.
     /// - parameter group: accepts an accountability group.
+    /// - parameter status: accepts a GroupMembership status to search for. Returns nil if none is passed in.
     /// - returns: A boolean with "true" if the user has a group membership matching the string ID passed to it. Otherwise returns false.
-    func isMemberOfGroup(group accountabilityGroup: AccountabilityGroup) throws -> Bool {
+    func isMemberOfGroup(group accountabilityGroup: AccountabilityGroup, status: GroupMembershipStatus? = nil) -> Bool {
         let groupId = accountabilityGroup.id
         
         guard groupId != nil else {
-            throw AddingUserToGroupError.groupMissingId
+            return false
         }
         
         guard self.groupMembership != nil else {
             return false
         }
         
-        if ((self.groupMembership?.contains(where: { $0.groupId == groupId })) != nil) {
+        let groupMembership = self.groupMembership?.first(where: {$0.groupId == groupId })
+        
+        guard groupMembership != nil else {
+            return false
+        }
+        
+        if status == nil {
+            return true
+        } else if status == groupMembership!.membershipStatus {
             return true
         } else {
             return false

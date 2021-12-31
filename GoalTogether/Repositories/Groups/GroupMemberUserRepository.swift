@@ -14,16 +14,17 @@ import Combine
 class GroupMemberUserRepository: ObservableObject, GroupUserStoreType {
 
     let db = Firestore.firestore()
-    var listener: ListenerRegistration?
+    var activeListener: ListenerRegistration?
+    var pendingListener: ListenerRegistration?
     
     @Published var membersWithStatus: [(UserProfile, GroupMembershipStatus)] = [(UserProfile, GroupMembershipStatus)]()
     var membersWithStatusPublished: Published<[(UserProfile, GroupMembershipStatus)]> { _membersWithStatus }
     var membersWithStatusPublisher: Published<[(UserProfile, GroupMembershipStatus)]>.Publisher { $membersWithStatus }
     
     
-    var groupId: String? {
+    var group: AccountabilityGroup? {
         didSet {
-            if groupId != nil && groupId != oldValue {
+            if group != nil && group != oldValue {
                 let _ = self.loadGroupMembers()
             }
         }
@@ -31,11 +32,34 @@ class GroupMemberUserRepository: ObservableObject, GroupUserStoreType {
     
     func loadGroupMembers() -> AnyPublisher<Bool, Never> {
         Future { promise in
-            guard self.groupId != nil else {
+            guard self.group != nil else {
                 return
             }
             
-            // add in the listener and query here
+            guard self.group!.id != nil else {
+                return
+            }
+            
+            self.activeListener = self.db.collection("users")
+                .whereField("groupMembership", arrayContains: [
+                    "groupId": self.group!.id!,
+                    "groupName": self.group!.title,
+                    "membershipStatus": "active",
+                                ])
+                .addSnapshotListener { (querySnapshot, error) in
+                    if let querySnapshot = querySnapshot {
+                        self.membersWithStatus = querySnapshot.documents.compactMap {
+                            document in
+                            do {
+                                let x = try document.data(as: UserProfile.self)
+                                return (x!, GroupMembershipStatus.active)
+                            } catch {
+                                print(error)
+                            }
+                            return nil
+                        }
+                    }
+                }
             
             promise(.success(true))
         }

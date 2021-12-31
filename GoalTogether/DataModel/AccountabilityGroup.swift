@@ -15,7 +15,7 @@ enum GroupMembershipStatus: String, Codable {
 
 struct AccountabilityGroup: Codable, Identifiable, Equatable {
     static func == (lhs: AccountabilityGroup, rhs: AccountabilityGroup) -> Bool {
-        return lhs.id != nil && lhs.id == rhs.id && lhs.title == rhs.title && lhs.creationDate == rhs.creationDate && lhs.activeMembers == rhs.activeMembers && lhs.pendingMembers == rhs.pendingMembers
+        return lhs.id != nil && lhs.id == rhs.id && lhs.title == rhs.title && lhs.creationDate == rhs.creationDate
     }
     
     @DocumentID var id: String?

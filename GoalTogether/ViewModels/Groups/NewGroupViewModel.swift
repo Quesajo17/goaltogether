@@ -54,7 +54,12 @@ class NewGroupViewModel: ObservableObject {
     
     
     func saveGroup() throws {
-        self.group.members = addPendingUsersToGroup(pendingInvitees)
+        guard currentUser.currentUser?.id != nil else {
+            throw ErrorUpdatingGroupMembership.userHasNoId
+        }
+        
+        self.group.activeMembers = [currentUser.currentUser!.id!]
+        self.group.pendingMembers = addPendingUsersToGroup(pendingInvitees)
         
         do {
             group.id = try groupRepository.addGroup(group)
@@ -75,15 +80,13 @@ class NewGroupViewModel: ObservableObject {
     /// The addPendingUsersToGroup function will take all users in a list (meant to take all users from pendingInvitees) and add them to the group.members array in the existing group.
     /// - parameter _users: This is a blank parameter that takes a list of user profiles, and converts them to a user membership.
     /// - returns: This returns an array of UserMemberships which can be added to an AccountabilityGroup's "members" property.
-    private func addPendingUsersToGroup(_ users: [UserProfile]) -> [UserMembership] {
-        var groupMembers: [UserMembership] = [UserMembership]()
+    private func addPendingUsersToGroup(_ users: [UserProfile]) -> [String] {
+        var groupMembers = [String]()
         
         for userProfile in users {
-            var userIsMe: Bool = false
-            if userProfile.id == currentUser.currentUser?.id && userProfile.id != nil {
-                userIsMe = true
+            if userProfile.id != currentUser.currentUser?.id && userProfile.id != nil {
+                groupMembers.append(userProfile.id!)
             }
-            groupMembers.append(UserMembership(userId: userProfile.id!, membershipStatus: userIsMe == true ? .active : .pending))
         }
         return groupMembers
     }

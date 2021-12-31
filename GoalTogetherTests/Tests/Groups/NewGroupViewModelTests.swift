@@ -37,7 +37,7 @@ class NewGroupViewModelTests: XCTestCase {
         }
         
         // assert
-        XCTAssertEqual(sut.groupRepository.accountabilityGroups.count, 3)
+        XCTAssertEqual(sut.groupRepository.activeGroups.count, 2)
     }
 
     // This test verifies that upon saving, my user is automatically added to the group as a new member.
@@ -50,14 +50,13 @@ class NewGroupViewModelTests: XCTestCase {
         } catch {
             print(error)
         }
-        let groupMembership = sut.groupRepository.accountabilityGroups[0].members
+        let activeMembers = sut.groupRepository.activeGroups[1].activeMembers
         // finds the first listed member in the group.
-        let firstMember = groupMembership![0]
+        let firstMember = activeMembers![0]
         
         // assert
-        XCTAssertNotNil(groupMembership)
-        XCTAssertEqual(firstMember.userId, sut.currentUser.currentUser!.id)
-        XCTAssertEqual(firstMember.membershipStatus, .active)
+        XCTAssertNotNil(activeMembers)
+        XCTAssertEqual(firstMember, sut.currentUser.currentUser!.id)
     }
     
     // This test verifies that upon saving, my user has this group saved to the user profile, as an active member.
@@ -142,11 +141,11 @@ class NewGroupViewModelTests: XCTestCase {
         } catch {
             print(error)
         }
-        let groupMemberships = sut.group.members
+        let activeMembers = sut.group.activeMembers
         let count = sut.currentUser.currentUser!.groupMembership!.count
         
         // assert
-        XCTAssertNil(groupMemberships)
+        XCTAssertNil(activeMembers)
         XCTAssertEqual(count, 2)
         XCTAssertNil(sut.pendingInvitees[1].groupMembership)
     }
@@ -172,15 +171,11 @@ class NewGroupViewModelTests: XCTestCase {
             print(error)
         }
         
-        let groupMemberships: [UserMembership] = sut.group.members!
-        let firstGroupMember = groupMemberships[0]
-        let secondGroupMember = groupMemberships[1]
+        let pendingMembers = sut.group.pendingMembers
         
         // assert
-        XCTAssertEqual(firstGroupMember.userId, sut.currentUser.currentUser!.id)
-        XCTAssertEqual(firstGroupMember.membershipStatus, .active)
-        XCTAssertEqual(secondGroupMember.userId, testUser.id)
-        XCTAssertEqual(secondGroupMember.membershipStatus, .pending)
+        XCTAssertNotNil(pendingMembers)
+        XCTAssertEqual(pendingMembers![0], testUser.id)
     }
     
     // This test verifies that saving the group with a new user added will add the group to a new user.

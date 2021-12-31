@@ -27,7 +27,6 @@ class CurrentUserProfile: NSObject, ObservableObject, CurrentUserType {
             // Subscribes to the logged in user in Authentication state, and sets user profile/loggedInUser in the view model based on that logged in user.
             AuthenticationState.shared.$loggedInUser
                 .dropFirst()
-                .print()
                 .sink { [weak self] user in
                     print("Authentication state has changed. Setting UserProfile to this uid: \(String(describing: user?.uid))")
                     self?.loadUser()
@@ -38,7 +37,6 @@ class CurrentUserProfile: NSObject, ObservableObject, CurrentUserType {
     
     func loadUser() {
         let userId = auth.currentUser?.uid
-        print("user ID for loadUser function is now \(String(describing: userId))")
         var profile: UserProfile? = nil
         
         if userId != nil {
@@ -51,14 +49,12 @@ class CurrentUserProfile: NSObject, ObservableObject, CurrentUserType {
                 case .success(let userProfile):
                     if userProfile != nil {
                         profile = userProfile
-                        print("set profile to \(String(describing: userProfile?.id))")
                         self.currentUser = profile
                         // self.loadImageFromFirebase()
                     } else {
                         let newUser = self.userProfileUsingAuthUser()
                         self.createFirestoreUser(newUser)
                         profile = newUser
-                        print("LoadUser function: created new Firestore User")
                         self.currentUser = profile
 
                     }
@@ -170,7 +166,6 @@ class CurrentUserProfile: NSObject, ObservableObject, CurrentUserType {
         if let profileId = userProfile.id {
             do {
                 try db.collection("users").document(profileId).setData(from: userProfile)
-                print("Attempted to set data from userProfile back to Firebase - no errors noticed at this point.")
             } catch {
                 fatalError("Unable to encode user: \(error.localizedDescription)")
             }
@@ -185,7 +180,6 @@ class CurrentUserProfile: NSObject, ObservableObject, CurrentUserType {
         guard authId != nil else { return false }
         guard profileId == authId else { return false }
         
-        print("Match verified with current profile. Works.")
         return true
     }
     

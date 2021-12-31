@@ -27,7 +27,8 @@ protocol ActionStoreType {
 protocol AimActionStoreType: ActionStoreType {
     
     var aim: Aim { get }
+    var user: UserProfile { get }
     
-    init(aim: Aim)
+    init(aim: Aim, userProfile: UserProfile)
     
 }

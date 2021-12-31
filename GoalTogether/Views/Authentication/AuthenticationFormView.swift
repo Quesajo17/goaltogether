@@ -50,7 +50,7 @@ struct AuthenticationFormView: View {
                 Text(authType.text)
                 .font(.callout)
             }
-            .buttonStyle(GeneralButtonStyle())
+            .buttonStyle(RoundedRectangleBlackButtonStyle())
             .disabled(email.count == 0 && password.count == 0)
 
             Button(action: footerButtonTapped) {

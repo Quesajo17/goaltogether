@@ -54,7 +54,6 @@ class SeasonRepository: ObservableObject, SeasonStoreType {
                                     print("Document Data: \(String(describing: document))")
                                     let x = try document.data(as: Season.self)
                                     if x != nil {
-                                        print("X equals \(String(describing: x))")
                                         promise(Result.success(x!))
                                     } else {
                                         promise(Result.failure(ErrorLoadingSeason.NoSeasonFound))

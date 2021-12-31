@@ -9,9 +9,13 @@ import Foundation
 
 protocol GroupStoreType {
 
-    var accountabilityGroups: [AccountabilityGroup] { get set }
-    var accountabilityGroupsPublished: Published<[AccountabilityGroup]> { get }
-    var accountabilityGroupsPublisher: Published<[AccountabilityGroup]>.Publisher { get }
+    var activeGroups: [AccountabilityGroup] { get set }
+    var activeGroupsPublished: Published<[AccountabilityGroup]> { get }
+    var activeGroupsPublisher: Published<[AccountabilityGroup]>.Publisher { get }
+    
+    var pendingGroups: [AccountabilityGroup] { get set }
+    var pendingGroupsPublished: Published<[AccountabilityGroup]> { get }
+    var pendingGroupsPublisher: Published<[AccountabilityGroup]>.Publisher { get }
     
     func addGroup(_ accountabilityGroup: AccountabilityGroup) throws -> String
     func updateGroup(_ accountabilityGroup: AccountabilityGroup)
@@ -19,28 +23,40 @@ protocol GroupStoreType {
     
     func endListening()
     
-    func updateMembers(groupAndMembers: (AccountabilityGroup, [UserMembership])) throws
-    func sendNewInvitation(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup, [UserMembership])
-    func updateMembershipStatus(group accountabilityGroup: AccountabilityGroup, user: UserProfile, newStatus: GroupMembershipStatus) throws -> (AccountabilityGroup, [UserMembership])
-    func removeMemberFromGroup(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup, [UserMembership])
-    func updateGroupName(group accountabilityGroup: AccountabilityGroup, newName: String) throws -> (AccountabilityGroup, [UserMembership])
+    func updateMembers(group accountabilityGroup: AccountabilityGroup) throws
+    func sendNewInvitation(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup)
+    func activatePendingUser(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup)
+    func removeMemberFromGroup(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup)
 }
 
 extension GroupStoreType {
     
-    func updateMembers(groupAndMembers: (AccountabilityGroup, [UserMembership])) throws {
-        var updatedGroup = groupAndMembers.0
+    func updateMembers(group accountabilityGroup: AccountabilityGroup) throws {
+        guard accountabilityGroup.id != nil else {
+            throw ErrorUpdatingGroupMembership.groupHasNoId
+        }
         
-        updatedGroup.members = groupAndMembers.1
+        var groupForUpdate: AccountabilityGroup
         
-        updateGroup(updatedGroup)
+        if self.activeGroups.contains(where: { $0.id == accountabilityGroup.id }) {
+            groupForUpdate = self.activeGroups.first(where: { $0.id == accountabilityGroup.id })!
+        } else if self.pendingGroups.contains(where: { $0.id == accountabilityGroup.id }) {
+            groupForUpdate = self.pendingGroups.first(where: {$0.id == accountabilityGroup.id })!
+        } else {
+            throw ErrorUpdatingGroupMembership.groupCouldNotBeFound
+        }
+        
+        groupForUpdate.activeMembers = accountabilityGroup.activeMembers
+        groupForUpdate.pendingMembers = accountabilityGroup.pendingMembers
+        
+        updateGroup(groupForUpdate)
     }
     
-    /// The sendNewInvitation function takes a user and a group, and returns the group and it's current group member array with a pending invitation to the specified user added.
+    /// The sendNewInvitation function takes a user and a group, and returns the group and it's current group member arrays with a pending invitation to the specified user added.
     /// - parameter group: This accepts an accountabilityGroup
     /// - parameter user: This accepts a userProfile
-    /// - returns: Returns a tuple containing an accountabilityGroup and an array of groupMembers containing the group's current members with a pending member added for this particular user.
-    func sendNewInvitation(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup, [UserMembership]) {
+    /// - returns: Returns a tuple containing an accountabilityGroup and an array of active members and pending members with the group's current members with a pending member added for this particular user.
+    func sendNewInvitation(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup) {
         
         do {
             let _ = try accountabilityGroup.idCheckForUpdatingMembership(user)
@@ -48,32 +64,28 @@ extension GroupStoreType {
             throw error
         }
         
-        let originalMembers = accountabilityGroup.members
-        var newMembershipSet = originalMembers
+        var updatingGroup = accountabilityGroup
         
-        let index = newMembershipSet?.firstIndex(where: { $0.userId == user.id })
-        
-        guard index == nil else {
+        guard updatingGroup.activeMembers?.contains(where: { $0 == user.id }) != true && updatingGroup.pendingMembers?.contains(where: { $0 == user.id }) != true else {
             throw ErrorUpdatingGroupMembership.userAlreadyInvited
         }
         
-        let newMembership = UserMembership(userId: user.id!, membershipStatus: .pending)
-        
-        if newMembershipSet == nil {
-            newMembershipSet = [newMembership]
+        if updatingGroup.pendingMembers == nil {
+            updatingGroup.pendingMembers = [user.id!]
         } else {
-            newMembershipSet!.append(newMembership)
+            updatingGroup.pendingMembers!.append(user.id!)
         }
         
-        return (accountabilityGroup, newMembershipSet!)
+        return updatingGroup
     }
     
-    /// The updatedMembershipStatus function takes a user, a group, and a membershipStatus, and returns the group and it's current group member array with the specified user's status updated to match the newStatus as specified.
+    /// The activatePendingUser function takes a user and a group, and removes the user from the pending members list, and adds them to the active users list.
     /// - parameter group: This accepts an accountabilityGroup
     /// - parameter user: This accepts a userProfile
-    /// - parameter newStatus: This acceps a GroupMembershipStatus (.active, .pending, or .rejected)
-    /// - returns: If the newStatus is different than the group member's current status, this returns a tuple containing the group, and the group's updated memberships.
-    func updateMembershipStatus(group accountabilityGroup: AccountabilityGroup, user: UserProfile, newStatus: GroupMembershipStatus) throws -> (AccountabilityGroup, [UserMembership]) {
+    /// - returns: Returns
+    func activatePendingUser(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup) {
+        
+        var updatingGroup = accountabilityGroup
         
         do {
             let _ = try accountabilityGroup.idCheckForUpdatingMembership(user)
@@ -81,29 +93,31 @@ extension GroupStoreType {
             throw error
         }
         
-        let originalMembershipSet = accountabilityGroup.members
-        var newMembershipSet = originalMembershipSet
-        
-        let index = newMembershipSet?.firstIndex(where: { $0.userId == user.id })
-        
-        guard index != nil else {
-            throw ErrorUpdatingGroupMembership.groupHasNoMember
+        guard updatingGroup.activeMembers?.contains(where: { $0 == user.id }) != true else {
+            throw ErrorUpdatingGroupMembership.userAlreadyActive
         }
         
-        guard newMembershipSet![index!].membershipStatus != newStatus else {
-            throw ErrorUpdatingGroupMembership.updatesMatchCurrentMember
+        guard updatingGroup.pendingMembers?.contains(where: { $0 == user.id }) == true else {
+            throw ErrorUpdatingGroupMembership.noPendingInviteToActivate
         }
         
-        newMembershipSet![index!].membershipStatus = newStatus
+        if updatingGroup.activeMembers == nil {
+            updatingGroup.activeMembers = [user.id!]
+        } else {
+            updatingGroup.activeMembers!.append(user.id!)
+        }
+        updatingGroup.pendingMembers?.removeAll(where: { $0 == user.id })
         
-        return (accountabilityGroup, newMembershipSet!)
+        return updatingGroup
     }
     
     /// The removeMemberFromGroup function takes a user and a group and returns the group and its member array with the specified user removed.
     /// - parameter group: This accepts an accountabilityGroup
     /// - parameter user: This accepts a userProfile
     /// - returns: If the user is currently in the group, this returns the group and its member array with the current user removed.
-    func removeMemberFromGroup(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup, [UserMembership]) {
+    func removeMemberFromGroup(group accountabilityGroup: AccountabilityGroup, user: UserProfile) throws -> (AccountabilityGroup) {
+        
+        var updatingGroup = accountabilityGroup
         
         do {
             let _ = try accountabilityGroup.idCheckForUpdatingMembership(user)
@@ -111,41 +125,13 @@ extension GroupStoreType {
             throw error
         }
         
-        let originalMemberSet = accountabilityGroup.members
-        var newMembershipSet = originalMemberSet
-        
-        let index = newMembershipSet?.firstIndex(where: { $0.userId == user.id })
-        
-        guard index != nil else {
+        guard (updatingGroup.activeMembers?.contains(where: { $0 == user.id }) == true) || (updatingGroup.pendingMembers?.contains(where: { $0 == user.id }) == true) else {
             throw ErrorUpdatingGroupMembership.groupHasNoMember
         }
         
-        newMembershipSet!.removeAll(where: { $0.userId == user.id })
+        updatingGroup.activeMembers?.removeAll(where: { $0 == user.id })
+        updatingGroup.pendingMembers?.removeAll(where: { $0 == user.id })
         
-        return (accountabilityGroup, newMembershipSet!)
-    }
-    
-    /// The updateGroupName function takes an accountability group and a new name as a string value, and returns a tuple with the group and an updated name, along with the group's member list.
-    /// - parameter group: This accepts an accountabilityGroup
-    /// - parameter newName: This accepts a string value for the group's new name
-    /// - returns: This returns a tuple with the accountability group with an updated name (matching the newName), and the group's list of members.
-    func updateGroupName(group accountabilityGroup: AccountabilityGroup, newName: String) throws -> (AccountabilityGroup, [UserMembership]) {
-        
-        guard accountabilityGroup.id != nil else {
-            throw ErrorUpdatingGroupMembership.groupHasNoId
-        }
-        
-        var memberSet: [UserMembership]
-        var updatedGroup = accountabilityGroup
-        
-        updatedGroup.title = newName
-            
-        if accountabilityGroup.members != nil {
-            memberSet = accountabilityGroup.members!
-        } else {
-            memberSet = [UserMembership]()
-        }
-        
-        return (updatedGroup, memberSet)
+        return updatingGroup
     }
 }

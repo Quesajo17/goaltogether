@@ -40,6 +40,7 @@ class GroupHubViewModelTests: XCTestCase {
         XCTAssertEqual(count, 1)
     }
     
+    /*
     // This test checks accepting a pending invitation and makes sure that the group's membership has been updated to active status.
     func testGroupHubViewModel_acceptPendingInvitation_updatesGroup() {
         // given
@@ -112,4 +113,5 @@ class GroupHubViewModelTests: XCTestCase {
         XCTAssertEqual(activeCount, 2)
         XCTAssertEqual(pendingCount, 0)
     }
+*/
 }

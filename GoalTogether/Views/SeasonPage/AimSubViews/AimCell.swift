@@ -36,6 +36,16 @@ struct AimCell: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             
                         }
+                        if aimCellVM.aim.completed == false {
+                            Button(action: { aimCellVM.completeAim() }) {
+                                HStack {
+                                    Image(systemName: "square")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                    Text("Complete Aim")
+                                }
+                            }
+                        }
                     }// .frame(width: 0.9 * geometry.size.width)
                     VStack {
                         Image(systemName: "pencil")
@@ -43,7 +53,7 @@ struct AimCell: View {
                             .frame(width: 20, height: 20)
                             .padding()
                             .onTapGesture {
-                                self.editingAim = self.aimCellVM.aim
+                                self.editingAim = aimCellVM.aim
                             }
                         Image(systemName: expandedView == false ? "chevron.down.circle" : "chevron.up.circle")
                             .resizable()
@@ -64,9 +74,10 @@ struct AimCell: View {
                         .font(.subheadline)
                     ForEach(aimCellVM.actions!) { action in
                         AimActionSubCell(action: action)
+                            .padding()
                     }
                     Button(action: {
-                        self.editingAction = Action(title: "")
+                        self.editingAction = Action(title: "", aimId: aimCellVM.aim.id)
                     }) {
                         HStack {
                             Image(systemName: "plus.circle.fill")
@@ -78,13 +89,14 @@ struct AimCell: View {
                     
                 }
             }.background(RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color.gray))
+                            .foregroundColor(aimCellVM.aim.completed ? Color.green : Color.gray))
+                .opacity(0.7)
         // }
     }
 }
 
 struct AimCell_Previews: PreviewProvider {
     static var previews: some View {
-        AimCell(aimCellVM: MyAimCellViewModel(aimRepository: MyAimsRepository(), aim: Aim(id: nil, title: "Original Goal", userId: nil, seasonId: "newSeasonId", startDate: Date(), plannedEndDate: Date(), completed: false, completionDate: nil, description: "This is my first long term goal. We'll see if I'm able to accomplish it effectively.", actions: nil)), editingAim: .constant(nil), editingAction: .constant(nil))
+        AimCell(aimCellVM: MyAimCellViewModel(aimRepository: MyAimsRepository(), aim: Aim(id: nil, title: "Original Goal", userId: nil, seasonId: "newSeasonId", startDate: Date(), plannedEndDate: Date(), completed: false, completionDate: nil, description: "This is my first long term goal. We'll see if I'm able to accomplish it effectively.", actions: nil), userProfile: CurrentUserProfile.shared.currentUser!), editingAim: .constant(nil), editingAction: .constant(nil))
     }
 }

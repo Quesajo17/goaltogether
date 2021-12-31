@@ -16,7 +16,7 @@ class MockGroupUserRepositoryTests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         sut = MockGroupMemberUserRepository()
-        group = MockGroupsRepository().accountabilityGroups[0]
+        group = MockGroupsRepository().activeGroups[0]
     }
 
     override func tearDownWithError() throws {
